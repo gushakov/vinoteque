@@ -1,0 +1,1069 @@
+2011-07-09 09:54:32,503 DEBUG (Utils.java:106) - Parsing: x
+2011-07-09 09:54:32,503 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,503 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,503 DEBUG (Utils.java:97) - Token: 2
+2011-07-09 09:54:32,503 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,503 DEBUG (Utils.java:106) - Parsing: 2
+2011-07-09 09:54:32,503 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,503 DEBUG (Utils.java:97) - Token:  SFr. 14.00 
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,612 DEBUG (Utils.java:106) - Parsing: SFr. 14.00
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token:  SFr. 28.00 
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,612 DEBUG (Utils.java:106) - Parsing: SFr. 28.00
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,612 DEBUG (Utils.java:84) - Line: 18.07.2009,66,2008,"F","Côt. de Tongue","Muscat sec","St.Georges d'Ibry",,"X",,5," SFr. 9.00 "," SFr. 45.00 ",,
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: 18.07.2009
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,612 DEBUG (Utils.java:106) - Parsing: 18.07.2009
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: 66
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,612 DEBUG (Utils.java:106) - Parsing: 66
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: 2008
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,612 DEBUG (Utils.java:106) - Parsing: 2008
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: F
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,612 DEBUG (Utils.java:106) - Parsing: F
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: Côt. de Tongue
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,612 DEBUG (Utils.java:106) - Parsing: Côt. de Tongue
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: Muscat sec
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,612 DEBUG (Utils.java:106) - Parsing: Muscat sec
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: St.Georges d'Ibry
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,612 DEBUG (Utils.java:106) - Parsing: St.Georges d'Ibry
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,612 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: X
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,628 DEBUG (Utils.java:106) - Parsing: X
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: 5
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,628 DEBUG (Utils.java:106) - Parsing: 5
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token:  SFr. 9.00 
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,628 DEBUG (Utils.java:106) - Parsing: SFr. 9.00
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token:  SFr. 45.00 
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,628 DEBUG (Utils.java:106) - Parsing: SFr. 45.00
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,628 DEBUG (Utils.java:84) - Line: 18.07.2009,66,2008,"F","Côt. de Tongue","Cuvée 1860","St.Georges d'Ibry","X",,,6," SFr. 12.00 "," SFr. 72.00 ",,
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: 18.07.2009
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,628 DEBUG (Utils.java:106) - Parsing: 18.07.2009
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: 66
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,628 DEBUG (Utils.java:106) - Parsing: 66
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: 2008
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,628 DEBUG (Utils.java:106) - Parsing: 2008
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: F
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,628 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,644 DEBUG (Utils.java:106) - Parsing: F
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: Côt. de Tongue
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,644 DEBUG (Utils.java:106) - Parsing: Côt. de Tongue
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: Cuvée 1860
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,644 DEBUG (Utils.java:106) - Parsing: Cuvée 1860
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: St.Georges d'Ibry
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,644 DEBUG (Utils.java:106) - Parsing: St.Georges d'Ibry
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: X
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,644 DEBUG (Utils.java:106) - Parsing: X
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: 6
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,644 DEBUG (Utils.java:106) - Parsing: 6
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token:  SFr. 12.00 
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,644 DEBUG (Utils.java:106) - Parsing: SFr. 12.00
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token:  SFr. 72.00 
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,644 DEBUG (Utils.java:106) - Parsing: SFr. 72.00
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,644 DEBUG (Utils.java:84) - Line: 08.12.2008,67,2006,"F","Côtes de Tongue","Merlot","Domaine d'Ibry","X",,,5," SFr. 8.00 "," SFr. 40.00 ",,
+2011-07-09 09:54:32,644 DEBUG (Utils.java:97) - Token: 08.12.2008
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,659 DEBUG (Utils.java:106) - Parsing: 08.12.2008
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: 67
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,659 DEBUG (Utils.java:106) - Parsing: 67
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: 2006
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,659 DEBUG (Utils.java:106) - Parsing: 2006
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: F
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,659 DEBUG (Utils.java:106) - Parsing: F
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: Côtes de Tongue
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,659 DEBUG (Utils.java:106) - Parsing: Côtes de Tongue
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: Merlot
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,659 DEBUG (Utils.java:106) - Parsing: Merlot
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: Domaine d'Ibry
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,659 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,675 DEBUG (Utils.java:106) - Parsing: Domaine d'Ibry
+2011-07-09 09:54:32,675 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,675 DEBUG (Utils.java:97) - Token: X
+2011-07-09 09:54:32,675 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,675 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,675 DEBUG (Utils.java:106) - Parsing: X
+2011-07-09 09:54:32,675 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,675 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: 5
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,784 DEBUG (Utils.java:106) - Parsing: 5
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token:  SFr. 8.00 
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,784 DEBUG (Utils.java:106) - Parsing: SFr. 8.00
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token:  SFr. 40.00 
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,784 DEBUG (Utils.java:106) - Parsing: SFr. 40.00
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,784 DEBUG (Utils.java:84) - Line: 07.02.2007,67,2005,"F","Côtes de Tongue","L'ame des Pins","Dom. D'Ibry","X",,,3," SFr. 10.00 "," SFr. 30.00 ",,
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: 07.02.2007
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,784 DEBUG (Utils.java:106) - Parsing: 07.02.2007
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: 67
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,784 DEBUG (Utils.java:106) - Parsing: 67
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: 2005
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,784 DEBUG (Utils.java:106) - Parsing: 2005
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: F
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,784 DEBUG (Utils.java:106) - Parsing: F
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: Côtes de Tongue
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,784 DEBUG (Utils.java:106) - Parsing: Côtes de Tongue
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: L'ame des Pins
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,784 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,784 DEBUG (Utils.java:106) - Parsing: L'ame des Pins
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: Dom. D'Ibry
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,800 DEBUG (Utils.java:106) - Parsing: Dom. D'Ibry
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: X
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,800 DEBUG (Utils.java:106) - Parsing: X
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: 3
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,800 DEBUG (Utils.java:106) - Parsing: 3
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token:  SFr. 10.00 
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,800 DEBUG (Utils.java:106) - Parsing: SFr. 10.00
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token:  SFr. 30.00 
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,800 DEBUG (Utils.java:106) - Parsing: SFr. 30.00
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,800 DEBUG (Utils.java:84) - Line: 08.12.2008,67,2005,"F","Côtes de Tongue","Exellence","Dom. D'Ibry","X",,,4," SFr. 12.00 "," SFr. 48.00 ",,
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: 08.12.2008
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,800 DEBUG (Utils.java:106) - Parsing: 08.12.2008
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: 67
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,800 DEBUG (Utils.java:106) - Parsing: 67
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: 2005
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,800 DEBUG (Utils.java:106) - Parsing: 2005
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: F
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,800 DEBUG (Utils.java:106) - Parsing: F
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,800 DEBUG (Utils.java:97) - Token: Côtes de Tongue
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,815 DEBUG (Utils.java:106) - Parsing: Côtes de Tongue
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: Exellence
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,815 DEBUG (Utils.java:106) - Parsing: Exellence
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: Dom. D'Ibry
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,815 DEBUG (Utils.java:106) - Parsing: Dom. D'Ibry
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: X
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,815 DEBUG (Utils.java:106) - Parsing: X
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: 4
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,815 DEBUG (Utils.java:106) - Parsing: 4
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token:  SFr. 12.00 
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,815 DEBUG (Utils.java:106) - Parsing: SFr. 12.00
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token:  SFr. 48.00 
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,815 DEBUG (Utils.java:106) - Parsing: SFr. 48.00
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,815 DEBUG (Utils.java:84) - Line: 07.02.2007,68,2004,"E","La Mancha","Don Pasqual","Schuler","x",,,3," SFr. 13.00 "," SFr. 39.00 ",,
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: 07.02.2007
+2011-07-09 09:54:32,815 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,815 DEBUG (Utils.java:106) - Parsing: 07.02.2007
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: 68
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,831 DEBUG (Utils.java:106) - Parsing: 68
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: 2004
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,831 DEBUG (Utils.java:106) - Parsing: 2004
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: E
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,831 DEBUG (Utils.java:106) - Parsing: E
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: La Mancha
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,831 DEBUG (Utils.java:106) - Parsing: La Mancha
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: Don Pasqual
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,831 DEBUG (Utils.java:106) - Parsing: Don Pasqual
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: Schuler
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,831 DEBUG (Utils.java:106) - Parsing: Schuler
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: x
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,831 DEBUG (Utils.java:106) - Parsing: x
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: 3
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,831 DEBUG (Utils.java:106) - Parsing: 3
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token:  SFr. 13.00 
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,831 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,831 DEBUG (Utils.java:106) - Parsing: SFr. 13.00
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token:  SFr. 39.00 
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,846 DEBUG (Utils.java:106) - Parsing: SFr. 39.00
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,846 DEBUG (Utils.java:84) - Line: 07.02.2007,68,2003,"E","Navarre","Don Pasqual","Schuler","x",,,1," SFr. 12.00 "," SFr. 12.00 ",,
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: 07.02.2007
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,846 DEBUG (Utils.java:106) - Parsing: 07.02.2007
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: 68
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,846 DEBUG (Utils.java:106) - Parsing: 68
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: 2003
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,846 DEBUG (Utils.java:106) - Parsing: 2003
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: E
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,846 DEBUG (Utils.java:106) - Parsing: E
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: Navarre
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,846 DEBUG (Utils.java:106) - Parsing: Navarre
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: Don Pasqual
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,846 DEBUG (Utils.java:106) - Parsing: Don Pasqual
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: Schuler
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,846 DEBUG (Utils.java:106) - Parsing: Schuler
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,846 DEBUG (Utils.java:97) - Token: x
+2011-07-09 09:54:32,862 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,862 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,862 DEBUG (Utils.java:106) - Parsing: x
+2011-07-09 09:54:32,862 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,862 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,862 DEBUG (Utils.java:97) - Token: 1
+2011-07-09 09:54:32,862 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,971 DEBUG (Utils.java:106) - Parsing: 1
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token:  SFr. 12.00 
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,971 DEBUG (Utils.java:106) - Parsing: SFr. 12.00
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token:  SFr. 12.00 
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,971 DEBUG (Utils.java:106) - Parsing: SFr. 12.00
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,971 DEBUG (Utils.java:84) - Line: ,69,1997,"E","Rioja","Marques de Riscal",,"X",,,4," SFr. 21.00 "," SFr. 84.00 ",,
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: 69
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,971 DEBUG (Utils.java:106) - Parsing: 69
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: 1997
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,971 DEBUG (Utils.java:106) - Parsing: 1997
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: E
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,971 DEBUG (Utils.java:106) - Parsing: E
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: Rioja
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,971 DEBUG (Utils.java:106) - Parsing: Rioja
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: Marques de Riscal
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,971 DEBUG (Utils.java:106) - Parsing: Marques de Riscal
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,971 DEBUG (Utils.java:97) - Token: X
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,987 DEBUG (Utils.java:106) - Parsing: X
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: 4
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,987 DEBUG (Utils.java:106) - Parsing: 4
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token:  SFr. 21.00 
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,987 DEBUG (Utils.java:106) - Parsing: SFr. 21.00
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token:  SFr. 84.00 
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,987 DEBUG (Utils.java:106) - Parsing: SFr. 84.00
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,987 DEBUG (Utils.java:84) - Line: 26.12.2007,69,2005,"E","R.d.Duero","Recorba",,"X",,,4," SFr. 15.00 "," SFr. 60.00 ",,
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: 26.12.2007
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,987 DEBUG (Utils.java:106) - Parsing: 26.12.2007
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: 69
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,987 DEBUG (Utils.java:106) - Parsing: 69
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: 2005
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,987 DEBUG (Utils.java:106) - Parsing: 2005
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: E
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,987 DEBUG (Utils.java:106) - Parsing: E
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: R.d.Duero
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:32,987 DEBUG (Utils.java:106) - Parsing: R.d.Duero
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:32,987 DEBUG (Utils.java:97) - Token: Recorba
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,002 DEBUG (Utils.java:106) - Parsing: Recorba
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: X
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,002 DEBUG (Utils.java:106) - Parsing: X
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: 4
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,002 DEBUG (Utils.java:106) - Parsing: 4
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token:  SFr. 15.00 
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,002 DEBUG (Utils.java:106) - Parsing: SFr. 15.00
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token:  SFr. 60.00 
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,002 DEBUG (Utils.java:106) - Parsing: SFr. 60.00
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,002 DEBUG (Utils.java:84) - Line: 07.02.2007,70,2001,"E","Rioja","Finca Valpiedra","Fuenmayor","X",,,2," SFr. 22.00 "," SFr. 44.00 ",,
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: 07.02.2007
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,002 DEBUG (Utils.java:106) - Parsing: 07.02.2007
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: 70
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,002 DEBUG (Utils.java:106) - Parsing: 70
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: 2001
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,002 DEBUG (Utils.java:106) - Parsing: 2001
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: E
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,002 DEBUG (Utils.java:106) - Parsing: E
+2011-07-09 09:54:33,002 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: Rioja
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,018 DEBUG (Utils.java:106) - Parsing: Rioja
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: Finca Valpiedra
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,018 DEBUG (Utils.java:106) - Parsing: Finca Valpiedra
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: Fuenmayor
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,018 DEBUG (Utils.java:106) - Parsing: Fuenmayor
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: X
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,018 DEBUG (Utils.java:106) - Parsing: X
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: 2
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,018 DEBUG (Utils.java:106) - Parsing: 2
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token:  SFr. 22.00 
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,018 DEBUG (Utils.java:106) - Parsing: SFr. 22.00
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token:  SFr. 44.00 
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,018 DEBUG (Utils.java:106) - Parsing: SFr. 44.00
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,018 DEBUG (Utils.java:84) - Line: 07.02.2007,70,2002,"E","Cuenca","Finca Antigua",,"x",,,2," SFr. 18.00 "," SFr. 36.00 ",,
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: 07.02.2007
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,018 DEBUG (Utils.java:106) - Parsing: 07.02.2007
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: 70
+2011-07-09 09:54:33,018 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,034 DEBUG (Utils.java:106) - Parsing: 70
+2011-07-09 09:54:33,034 DEBUG (Utils.java:97) - Token: 2002
+2011-07-09 09:54:33,034 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,034 DEBUG (Utils.java:106) - Parsing: 2002
+2011-07-09 09:54:33,034 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,034 DEBUG (Utils.java:97) - Token: E
+2011-07-09 09:54:33,034 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,143 DEBUG (Utils.java:106) - Parsing: E
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: Cuenca
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,143 DEBUG (Utils.java:106) - Parsing: Cuenca
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: Finca Antigua
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,143 DEBUG (Utils.java:106) - Parsing: Finca Antigua
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: x
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,143 DEBUG (Utils.java:106) - Parsing: x
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: 2
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,143 DEBUG (Utils.java:106) - Parsing: 2
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token:  SFr. 18.00 
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,143 DEBUG (Utils.java:106) - Parsing: SFr. 18.00
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token:  SFr. 36.00 
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,143 DEBUG (Utils.java:106) - Parsing: SFr. 36.00
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,143 DEBUG (Utils.java:84) - Line: 29.01.2005,70,2000,"E","Rioja","Alcorta",,"x",,,1," SFr. 17.00 "," SFr. 17.00 ",,
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: 29.01.2005
+2011-07-09 09:54:33,143 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,158 DEBUG (Utils.java:106) - Parsing: 29.01.2005
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: 70
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,158 DEBUG (Utils.java:106) - Parsing: 70
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: 2000
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,158 DEBUG (Utils.java:106) - Parsing: 2000
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: E
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,158 DEBUG (Utils.java:106) - Parsing: E
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: Rioja
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,158 DEBUG (Utils.java:106) - Parsing: Rioja
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: Alcorta
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,158 DEBUG (Utils.java:106) - Parsing: Alcorta
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: x
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,158 DEBUG (Utils.java:106) - Parsing: x
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: 1
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,158 DEBUG (Utils.java:106) - Parsing: 1
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token:  SFr. 17.00 
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,158 DEBUG (Utils.java:106) - Parsing: SFr. 17.00
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token:  SFr. 17.00 
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,158 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,158 DEBUG (Utils.java:106) - Parsing: SFr. 17.00
+2011-07-09 09:54:33,174 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,174 DEBUG (Utils.java:84) - Line: 07.02.2007,70,2000,"E","R.d.Duero","Alarife",,"x",,,1," SFr. 22.00 "," SFr. 22.00 ",,
+2011-07-09 09:54:33,174 DEBUG (Utils.java:97) - Token: 07.02.2007
+2011-07-09 09:54:33,174 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,174 DEBUG (Utils.java:106) - Parsing: 07.02.2007
+2011-07-09 09:54:33,174 DEBUG (Utils.java:97) - Token: 70
+2011-07-09 09:54:33,174 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,174 DEBUG (Utils.java:106) - Parsing: 70
+2011-07-09 09:54:33,174 DEBUG (Utils.java:97) - Token: 2000
+2011-07-09 09:54:33,174 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,174 DEBUG (Utils.java:106) - Parsing: 2000
+2011-07-09 09:54:33,174 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,174 DEBUG (Utils.java:97) - Token: E
+2011-07-09 09:54:33,174 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,174 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,174 DEBUG (Utils.java:106) - Parsing: E
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: R.d.Duero
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,283 DEBUG (Utils.java:106) - Parsing: R.d.Duero
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: Alarife
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,283 DEBUG (Utils.java:106) - Parsing: Alarife
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: x
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,283 DEBUG (Utils.java:106) - Parsing: x
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: 1
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,283 DEBUG (Utils.java:106) - Parsing: 1
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token:  SFr. 22.00 
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,283 DEBUG (Utils.java:106) - Parsing: SFr. 22.00
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token:  SFr. 22.00 
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,283 DEBUG (Utils.java:106) - Parsing: SFr. 22.00
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,283 DEBUG (Utils.java:84) - Line: 26.12.2007,70,2004,"E","R.d.Duero","Atalayas",,"X",,,3," SFr. 16.00 "," SFr. 48.00 ",,
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: 26.12.2007
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,283 DEBUG (Utils.java:106) - Parsing: 26.12.2007
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: 70
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,283 DEBUG (Utils.java:106) - Parsing: 70
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: 2004
+2011-07-09 09:54:33,283 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,283 DEBUG (Utils.java:106) - Parsing: 2004
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: E
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,299 DEBUG (Utils.java:106) - Parsing: E
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: R.d.Duero
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,299 DEBUG (Utils.java:106) - Parsing: R.d.Duero
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: Atalayas
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,299 DEBUG (Utils.java:106) - Parsing: Atalayas
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: X
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,299 DEBUG (Utils.java:106) - Parsing: X
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: 3
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,299 DEBUG (Utils.java:106) - Parsing: 3
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token:  SFr. 16.00 
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,299 DEBUG (Utils.java:106) - Parsing: SFr. 16.00
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token:  SFr. 48.00 
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,299 DEBUG (Utils.java:106) - Parsing: SFr. 48.00
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,299 DEBUG (Utils.java:84) - Line: 08.12.2008,70,2006,"E","Ribera del Duero","Valdolé",,"X",,,2," SFr. 34.00 "," SFr. 68.00 ",,
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: 08.12.2008
+2011-07-09 09:54:33,299 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,314 DEBUG (Utils.java:106) - Parsing: 08.12.2008
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: 70
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,314 DEBUG (Utils.java:106) - Parsing: 70
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: 2006
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,314 DEBUG (Utils.java:106) - Parsing: 2006
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: E
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,314 DEBUG (Utils.java:106) - Parsing: E
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: Ribera del Duero
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,314 DEBUG (Utils.java:106) - Parsing: Ribera del Duero
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: Valdolé
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,314 DEBUG (Utils.java:106) - Parsing: Valdolé
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: X
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,314 DEBUG (Utils.java:106) - Parsing: X
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: 2
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,314 DEBUG (Utils.java:106) - Parsing: 2
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token:  SFr. 34.00 
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,314 DEBUG (Utils.java:106) - Parsing: SFr. 34.00
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token:  SFr. 68.00 
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,314 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,314 DEBUG (Utils.java:106) - Parsing: SFr. 68.00
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,330 DEBUG (Utils.java:84) - Line: 08.12.2008,71,2003,"E","Rioja","Marques de Riscal",,"X",,,1," SFr. 20.00 "," SFr. 20.00 ",,
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: 08.12.2008
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,330 DEBUG (Utils.java:106) - Parsing: 08.12.2008
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: 71
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,330 DEBUG (Utils.java:106) - Parsing: 71
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: 2003
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,330 DEBUG (Utils.java:106) - Parsing: 2003
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: E
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,330 DEBUG (Utils.java:106) - Parsing: E
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: Rioja
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,330 DEBUG (Utils.java:106) - Parsing: Rioja
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: Marques de Riscal
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,330 DEBUG (Utils.java:106) - Parsing: Marques de Riscal
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: X
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,330 DEBUG (Utils.java:106) - Parsing: X
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: 1
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,330 DEBUG (Utils.java:106) - Parsing: 1
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token:  SFr. 20.00 
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,330 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,330 DEBUG (Utils.java:106) - Parsing: SFr. 20.00
+2011-07-09 09:54:33,346 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,346 DEBUG (Utils.java:97) - Token:  SFr. 20.00 
+2011-07-09 09:54:33,346 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,346 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,346 DEBUG (Utils.java:106) - Parsing: SFr. 20.00
+2011-07-09 09:54:33,346 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,346 DEBUG (Utils.java:84) - Line: 29.01.2005,71,2000,"E","Rioja","Marques de Riscal",,"x"," "," ",6," SFr. 16.00 "," SFr. 96.00 ",,
+2011-07-09 09:54:33,346 DEBUG (Utils.java:97) - Token: 29.01.2005
+2011-07-09 09:54:33,346 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,346 DEBUG (Utils.java:106) - Parsing: 29.01.2005
+2011-07-09 09:54:33,346 DEBUG (Utils.java:97) - Token: 71
+2011-07-09 09:54:33,346 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,346 DEBUG (Utils.java:106) - Parsing: 71
+2011-07-09 09:54:33,346 DEBUG (Utils.java:97) - Token: 2000
+2011-07-09 09:54:33,346 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,346 DEBUG (Utils.java:106) - Parsing: 2000
+2011-07-09 09:54:33,346 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,346 DEBUG (Utils.java:97) - Token: E
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,361 DEBUG (Utils.java:106) - Parsing: E
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: Rioja
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,361 DEBUG (Utils.java:106) - Parsing: Rioja
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: Marques de Riscal
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,361 DEBUG (Utils.java:106) - Parsing: Marques de Riscal
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: x
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,361 DEBUG (Utils.java:106) - Parsing: x
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token:  
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token:  
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: 6
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,361 DEBUG (Utils.java:106) - Parsing: 6
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token:  SFr. 16.00 
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,361 DEBUG (Utils.java:106) - Parsing: SFr. 16.00
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token:  SFr. 96.00 
+2011-07-09 09:54:33,361 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,377 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,377 DEBUG (Utils.java:106) - Parsing: SFr. 96.00
+2011-07-09 09:54:33,377 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,377 DEBUG (Utils.java:84) - Line: 30.01.2005,71,1998,"E","Rioja","Marques de Riscal","Vinos de los Herederos Elciego","x",,,5," SFr. 19.00 "," SFr. 95.00 ",,
+2011-07-09 09:54:33,377 DEBUG (Utils.java:97) - Token: 30.01.2005
+2011-07-09 09:54:33,377 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,377 DEBUG (Utils.java:106) - Parsing: 30.01.2005
+2011-07-09 09:54:33,377 DEBUG (Utils.java:97) - Token: 71
+2011-07-09 09:54:33,377 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,377 DEBUG (Utils.java:106) - Parsing: 71
+2011-07-09 09:54:33,377 DEBUG (Utils.java:97) - Token: 1998
+2011-07-09 09:54:33,377 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,377 DEBUG (Utils.java:106) - Parsing: 1998
+2011-07-09 09:54:33,377 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,377 DEBUG (Utils.java:97) - Token: E
+2011-07-09 09:54:33,377 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,377 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,377 DEBUG (Utils.java:106) - Parsing: E
+2011-07-09 09:54:33,377 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,377 DEBUG (Utils.java:97) - Token: Rioja
+2011-07-09 09:54:33,377 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,392 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,392 DEBUG (Utils.java:106) - Parsing: Rioja
+2011-07-09 09:54:33,392 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,392 DEBUG (Utils.java:97) - Token: Marques de Riscal
+2011-07-09 09:54:33,392 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,392 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,392 DEBUG (Utils.java:106) - Parsing: Marques de Riscal
+2011-07-09 09:54:33,392 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,392 DEBUG (Utils.java:97) - Token: Vinos de los Herederos Elciego
+2011-07-09 09:54:33,392 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,392 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,392 DEBUG (Utils.java:106) - Parsing: Vinos de los Herederos Elciego
+2011-07-09 09:54:33,392 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,392 DEBUG (Utils.java:97) - Token: x
+2011-07-09 09:54:33,408 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,408 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,408 DEBUG (Utils.java:106) - Parsing: x
+2011-07-09 09:54:33,408 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,408 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,408 DEBUG (Utils.java:97) - Token: 5
+2011-07-09 09:54:33,408 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,408 DEBUG (Utils.java:106) - Parsing: 5
+2011-07-09 09:54:33,408 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,408 DEBUG (Utils.java:97) - Token:  SFr. 19.00 
+2011-07-09 09:54:33,408 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,424 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,424 DEBUG (Utils.java:106) - Parsing: SFr. 19.00
+2011-07-09 09:54:33,424 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,424 DEBUG (Utils.java:97) - Token:  SFr. 95.00 
+2011-07-09 09:54:33,424 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,424 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,424 DEBUG (Utils.java:106) - Parsing: SFr. 95.00
+2011-07-09 09:54:33,424 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,424 DEBUG (Utils.java:84) - Line: 18.07.2009,71,2007,"E","Catalunya","Sangre de Torro","Torres","X",,,3," SFr. 8.00 "," SFr. 24.00 ",,
+2011-07-09 09:54:33,424 DEBUG (Utils.java:97) - Token: 18.07.2009
+2011-07-09 09:54:33,424 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,424 DEBUG (Utils.java:106) - Parsing: 18.07.2009
+2011-07-09 09:54:33,424 DEBUG (Utils.java:97) - Token: 71
+2011-07-09 09:54:33,424 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,439 DEBUG (Utils.java:106) - Parsing: 71
+2011-07-09 09:54:33,439 DEBUG (Utils.java:97) - Token: 2007
+2011-07-09 09:54:33,439 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,439 DEBUG (Utils.java:106) - Parsing: 2007
+2011-07-09 09:54:33,439 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,439 DEBUG (Utils.java:97) - Token: E
+2011-07-09 09:54:33,439 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,439 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,439 DEBUG (Utils.java:106) - Parsing: E
+2011-07-09 09:54:33,439 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,439 DEBUG (Utils.java:97) - Token: Catalunya
+2011-07-09 09:54:33,439 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,439 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,439 DEBUG (Utils.java:106) - Parsing: Catalunya
+2011-07-09 09:54:33,455 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,455 DEBUG (Utils.java:97) - Token: Sangre de Torro
+2011-07-09 09:54:33,455 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,455 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,455 DEBUG (Utils.java:106) - Parsing: Sangre de Torro
+2011-07-09 09:54:33,455 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,455 DEBUG (Utils.java:97) - Token: Torres
+2011-07-09 09:54:33,455 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,455 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,455 DEBUG (Utils.java:106) - Parsing: Torres
+2011-07-09 09:54:33,455 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,455 DEBUG (Utils.java:97) - Token: X
+2011-07-09 09:54:33,455 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,455 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,455 DEBUG (Utils.java:106) - Parsing: X
+2011-07-09 09:54:33,455 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,470 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,470 DEBUG (Utils.java:97) - Token: 3
+2011-07-09 09:54:33,470 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,470 DEBUG (Utils.java:106) - Parsing: 3
+2011-07-09 09:54:33,470 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,470 DEBUG (Utils.java:97) - Token:  SFr. 8.00 
+2011-07-09 09:54:33,470 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,470 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,470 DEBUG (Utils.java:106) - Parsing: SFr. 8.00
+2011-07-09 09:54:33,470 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,470 DEBUG (Utils.java:97) - Token:  SFr. 24.00 
+2011-07-09 09:54:33,470 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,470 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,470 DEBUG (Utils.java:106) - Parsing: SFr. 24.00
+2011-07-09 09:54:33,470 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,470 DEBUG (Utils.java:84) - Line: 30.01.2005,72,1995,"E","Rioja","faustino I","Bodegas Faustino, Oyon","X",,,10," SFr. 22.00 "," SFr. 220.00 ",,
+2011-07-09 09:54:33,486 DEBUG (Utils.java:97) - Token: 30.01.2005
+2011-07-09 09:54:33,486 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,486 DEBUG (Utils.java:106) - Parsing: 30.01.2005
+2011-07-09 09:54:33,486 DEBUG (Utils.java:97) - Token: 72
+2011-07-09 09:54:33,486 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,486 DEBUG (Utils.java:106) - Parsing: 72
+2011-07-09 09:54:33,486 DEBUG (Utils.java:97) - Token: 1995
+2011-07-09 09:54:33,486 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,486 DEBUG (Utils.java:106) - Parsing: 1995
+2011-07-09 09:54:33,486 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,486 DEBUG (Utils.java:97) - Token: E
+2011-07-09 09:54:33,486 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,486 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,486 DEBUG (Utils.java:106) - Parsing: E
+2011-07-09 09:54:33,486 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,486 DEBUG (Utils.java:97) - Token: Rioja
+2011-07-09 09:54:33,502 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,502 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,502 DEBUG (Utils.java:106) - Parsing: Rioja
+2011-07-09 09:54:33,502 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,502 DEBUG (Utils.java:97) - Token: faustino I
+2011-07-09 09:54:33,502 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,502 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,502 DEBUG (Utils.java:106) - Parsing: faustino I
+2011-07-09 09:54:33,502 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,502 DEBUG (Utils.java:97) - Token: Bodegas Faustino
+2011-07-09 09:54:33,502 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,502 DEBUG (Utils.java:97) - Token:  Oyon
+2011-07-09 09:54:33,502 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,502 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,517 DEBUG (Utils.java:106) - Parsing: Bodegas Faustino,Oyon
+2011-07-09 09:54:33,517 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,517 DEBUG (Utils.java:97) - Token: X
+2011-07-09 09:54:33,517 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,517 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,517 DEBUG (Utils.java:106) - Parsing: X
+2011-07-09 09:54:33,517 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,517 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,517 DEBUG (Utils.java:97) - Token: 10
+2011-07-09 09:54:33,517 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,517 DEBUG (Utils.java:106) - Parsing: 10
+2011-07-09 09:54:33,533 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,533 DEBUG (Utils.java:97) - Token:  SFr. 22.00 
+2011-07-09 09:54:33,533 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,533 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,533 DEBUG (Utils.java:106) - Parsing: SFr. 22.00
+2011-07-09 09:54:33,533 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,533 DEBUG (Utils.java:97) - Token:  SFr. 220.00 
+2011-07-09 09:54:33,533 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,533 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,533 DEBUG (Utils.java:106) - Parsing: SFr. 220.00
+2011-07-09 09:54:33,533 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,533 DEBUG (Utils.java:84) - Line: 30.01.2005,72,1989,"E","Rioja","faustino I","Bodegas Faustino, Oyon","X",,,2," SFr. 26.00 "," SFr. 52.00 ",,
+2011-07-09 09:54:33,533 DEBUG (Utils.java:97) - Token: 30.01.2005
+2011-07-09 09:54:33,533 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,533 DEBUG (Utils.java:106) - Parsing: 30.01.2005
+2011-07-09 09:54:33,548 DEBUG (Utils.java:97) - Token: 72
+2011-07-09 09:54:33,548 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,548 DEBUG (Utils.java:106) - Parsing: 72
+2011-07-09 09:54:33,548 DEBUG (Utils.java:97) - Token: 1989
+2011-07-09 09:54:33,548 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,548 DEBUG (Utils.java:106) - Parsing: 1989
+2011-07-09 09:54:33,548 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,548 DEBUG (Utils.java:97) - Token: E
+2011-07-09 09:54:33,548 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,548 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,548 DEBUG (Utils.java:106) - Parsing: E
+2011-07-09 09:54:33,548 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,548 DEBUG (Utils.java:97) - Token: Rioja
+2011-07-09 09:54:33,548 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,564 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,564 DEBUG (Utils.java:106) - Parsing: Rioja
+2011-07-09 09:54:33,564 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,564 DEBUG (Utils.java:97) - Token: faustino I
+2011-07-09 09:54:33,564 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,564 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,564 DEBUG (Utils.java:106) - Parsing: faustino I
+2011-07-09 09:54:33,564 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: Bodegas Faustino
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token:  Oyon
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,673 DEBUG (Utils.java:106) - Parsing: Bodegas Faustino,Oyon
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: X
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,673 DEBUG (Utils.java:106) - Parsing: X
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: 2
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,673 DEBUG (Utils.java:106) - Parsing: 2
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token:  SFr. 26.00 
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,673 DEBUG (Utils.java:106) - Parsing: SFr. 26.00
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token:  SFr. 52.00 
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: "
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:33,673 DEBUG (Utils.java:106) - Parsing: SFr. 52.00
+2011-07-09 09:54:33,673 DEBUG (Utils.java:97) - Token: ,
+2011-07-09 09:54:34,422 INFO (AbstractApplicationContext.java:456) - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@77eaf8: startup date [Sat Jul 09 09:54:34 CEST 2011]; root of context hierarchy
+2011-07-09 09:54:34,422 INFO (XmlBeanDefinitionReader.java:315) - Loading XML bean definitions from class path resource [config-context.xml]
+2011-07-09 09:54:34,516 INFO (PropertiesLoaderSupport.java:177) - Loading properties file from class path resource [app.properties]
+2011-07-09 09:54:34,516 INFO (DefaultListableBeanFactory.java:555) - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@9a8a68: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,appConfig,dataSource,hsqldbDao,appProps,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0]; root of factory hierarchy
+2011-07-09 09:55:08,446 INFO (AbstractApplicationContext.java:456) - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@47858e: startup date [Sat Jul 09 09:55:08 CEST 2011]; root of context hierarchy
+2011-07-09 09:55:08,602 INFO (XmlBeanDefinitionReader.java:315) - Loading XML bean definitions from class path resource [config-context.xml]
+2011-07-09 09:55:09,116 INFO (PropertiesLoaderSupport.java:177) - Loading properties file from class path resource [app.properties]
+2011-07-09 09:55:09,163 INFO (DefaultListableBeanFactory.java:555) - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1e97676: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,appConfig,dataSource,hsqldbDao,appProps,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0]; root of factory hierarchy
+2011-07-09 09:55:20,395 DEBUG (MainWindow.java:406) - User ended the application normally.

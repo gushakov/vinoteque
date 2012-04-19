@@ -32,7 +32,7 @@ import org.jdesktop.swingx.JXList;
 import org.jdesktop.swingx.decorator.HighlighterFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import viniteque.config.AppConfig;
+import vinoteque.config.AppConfig;
 import vinoteque.beans.Entry;
 import vinoteque.beans.Vin;
 import vinoteque.beans.Vin.Column;

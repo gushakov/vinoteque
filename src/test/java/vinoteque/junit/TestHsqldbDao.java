@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import viniteque.config.AppConfig;
+import vinoteque.config.AppConfig;
 import vinoteque.beans.Entry;
 import vinoteque.beans.Vin;
 import static vinoteque.beans.Vin.Column.*;
@@ -37,7 +37,7 @@ public class TestHsqldbDao {
     @Transactional
     public void testDeleteAllEmpty() throws Exception {        
         assertNotNull(dao);
-        assertTrue(dao.deleteAllEmpty() > 0);        
+        assertTrue(dao.deleteAllEmpty() >= 0);        
     }
 
 //    @Test

@@ -1,4 +1,4 @@
-package viniteque.config;
+package vinoteque.config;
 
 import java.io.IOException;
 import java.util.Properties;

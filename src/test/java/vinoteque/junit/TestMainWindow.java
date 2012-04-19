@@ -6,7 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import viniteque.config.AppConfig;
+import vinoteque.config.AppConfig;
 
 
 public class TestMainWindow {

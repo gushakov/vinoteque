@@ -45,7 +45,8 @@ import vinoteque.utils.Utils;
  * @author George Ushakov
  */
 public class MainWindow extends javax.swing.JFrame 
-        implements ListSelectionListener, EditWithFocusListener, PropertyChangeListener {
+        implements ListSelectionListener, EditWithFocusListener, PropertyChangeListener,
+                   PreferencesChangeListener {
 
     private static final Logger logger = Logger.getLogger(MainWindow.class);
     private Properties props;
@@ -57,8 +58,8 @@ public class MainWindow extends javax.swing.JFrame
     private TableRowSorter tableRowSorter;
     private EntriesComboBoxModel regionsModel;
     private EntriesComboBoxModel appellationsModel;
-    private EntriesComboBoxModel vigneronsModel;
-
+    private EntriesComboBoxModel vigneronsModel;    
+    
     class SaveTask extends SwingWorker<Void, Void> {
         private boolean onExit;
         public SaveTask(boolean onExit) {
@@ -128,12 +129,16 @@ public class MainWindow extends javax.swing.JFrame
                 }
                 setProgress(90);
                 tableModel.reset();
+                //save the properties
                 //record table columns preferred widths
                 for (Column column : Column.values()) {
                     props.put("column."+column+".width",
                         ""+jXTable1.getColumnModel().getColumn(column.index()).getPreferredWidth());
                 }
                 Utils.writeProperties(props);
+                
+                //TODO: delete empty lines if the properties have been set
+                
             }
             catch (Exception e){
                 logger.error(e.getMessage(), e);
@@ -382,9 +387,8 @@ public class MainWindow extends javax.swing.JFrame
     }
 
     private void exit() {
-        //delete all empty lines
-        dao.deleteAllEmpty();        
         logger.debug("User ended the application normally.");
+        dispose();
         System.exit(0);
     }
 
@@ -445,6 +449,7 @@ public class MainWindow extends javax.swing.JFrame
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -515,7 +520,7 @@ public class MainWindow extends javax.swing.JFrame
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -581,7 +586,7 @@ public class MainWindow extends javax.swing.JFrame
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6)
@@ -647,7 +652,7 @@ public class MainWindow extends javax.swing.JFrame
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton9)
@@ -738,7 +743,7 @@ public class MainWindow extends javax.swing.JFrame
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(223, 223, 223)
                 .addComponent(jToggleButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 390, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 386, Short.MAX_VALUE)
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
@@ -764,7 +769,7 @@ public class MainWindow extends javax.swing.JFrame
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jToggleButton1))
                 .addGap(11, 11, 11)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -804,6 +809,14 @@ public class MainWindow extends javax.swing.JFrame
         });
         jMenu1.add(jMenuItem4);
 
+        jMenuItem5.setText("Préférences");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem5);
+
         jMenuItem1.setText("Quitter");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -820,11 +833,11 @@ public class MainWindow extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1251, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE)
+            .addComponent(jSplitPane1)
         );
 
         pack();
@@ -1152,6 +1165,17 @@ public class MainWindow extends javax.swing.JFrame
        }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        //show preferences dialog
+        logger.debug("Showing preferences dialog");        
+        JDialog dialog = new JDialog(this, "Préférences", true);
+        PreferencesPanel prefsPanel = new PreferencesPanel(this);
+        dialog.getContentPane().add(prefsPanel);
+        dialog.setSize(prefsPanel.getPreferredSize());
+        dialog.setLocation(200, 200);
+        dialog.setVisible(true);        
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1199,6 +1223,7 @@ public class MainWindow extends javax.swing.JFrame
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1375,6 +1400,28 @@ public class MainWindow extends javax.swing.JFrame
      */
     private void upgrade(){
         dao.addColumn("vins", "ANNEE_CONSOMMATION", "INTEGER", "0");
+    }
+
+    @Override
+    public Properties getPreferences() {
+        //copy the properties
+        Properties copy = new Properties();
+        copy.putAll(props);
+        return copy;
+    }
+
+    @Override
+    public void preferencesChanged(Properties preferences) {
+        logger.debug("Preferences have changed");
+        //invoked once the user has okeyed the preferences dialog
+        //copy the preferences to the properties
+        Iterator it = preferences.keySet().iterator();
+        while (it.hasNext()) {
+            String key = (String)it.next();
+            if (key.startsWith("prefs.")){
+                props.put(key, preferences.getProperty(key));
+            }
+        }
     }
 
 }

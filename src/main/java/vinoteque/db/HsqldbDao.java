@@ -1,5 +1,6 @@
 package vinoteque.db;
 
+import java.math.BigDecimal;
 import java.util.List;
 import javax.sql.DataSource;
 import org.apache.log4j.Logger;
@@ -137,7 +138,34 @@ public class HsqldbDao {
             batch);
         return deleteCounts;
     }
-
+    
+    public int deleteAllEmpty(){
+        
+        int deleteCounts = jdbcTemplate.update("delete from public.vins "
+                + "where casier = ? and "
+                + "appellation = ? and "
+                + "annee = ? and "
+                + "pays = ? and "
+                + "region = ? and "
+                + "vigneron = ? and "
+                + "qualite = ? and "
+                + "stock = ? and "
+                + "prix_btl = ? and "
+                + "annee_consommation = ?",
+                0,                  //casier
+                "",                 //appellation
+                0,                  //annee
+                "",                 //pays
+                "",                 //region
+                "",                 //vigneron
+                "",                 //qualite
+                0,                  //stock
+                new BigDecimal(0d), //prix_btl
+                0);                 //annee_consommation
+        
+        return deleteCounts;
+    }
+    
     public int[] updateVins(List<Vin> vins){
         SqlParameterSource[] batch = SqlParameterSourceUtils.createBatch(vins.toArray(new Vin[]{}));
         int[] updateCounts = jdbcTemplate.batchUpdate(

@@ -1,0 +1,8 @@
+/hsqldb/data.*
+/target/
+/Users/George/.netbeans/
+casiers.csv
+catalog.xml
+log.txt
+log.txt.*
+nbactions.xml

@@ -1,11 +1,17 @@
 package viniteque.config;
 
+import java.io.IOException;
+import java.util.Properties;
 import javax.sql.DataSource;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import vinoteque.db.HsqldbDao;
 
 /**
@@ -13,7 +19,7 @@ import vinoteque.db.HsqldbDao;
  * @author gushakov
  */
 @Configuration
-@ImportResource("classpath:config-context.xml")
+@EnableTransactionManagement
 public class AppConfig {
     @Value("${jdbc.driverClassName}")
     private String jdbcDriverClassName;
@@ -24,6 +30,25 @@ public class AppConfig {
     @Value("${jdbc.password}")
     private String jdbcPassword;
 
+    @Bean(name="appProps")
+    public static Properties appProps(){
+        try {
+            Resource file = new ClassPathResource("app.properties");
+            Properties props = new Properties();
+            props.load(file.getInputStream());
+            return props;
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+    
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertiesConfigurer(){
+        PropertySourcesPlaceholderConfigurer propertiesConfigurer = new PropertySourcesPlaceholderConfigurer();
+        propertiesConfigurer.setProperties(appProps());
+        return propertiesConfigurer;
+    }
+    
     @Bean(destroyMethod="close")
     public DataSource dataSource(){
         BasicDataSource dataSource = new BasicDataSource();
@@ -37,5 +62,10 @@ public class AppConfig {
     @Bean
     public HsqldbDao hsqldbDao(){
         return new HsqldbDao(dataSource());
-    }    
+    }
+    
+    @Bean
+    public DataSourceTransactionManager transactionManager(){
+        return new DataSourceTransactionManager(dataSource());
+    }
 }

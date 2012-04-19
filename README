@@ -1,5 +1,38 @@
-COPYRIGHT DISCLAIMER
-To the best of my knowledge all of the code and resources included in this distribution are available under licenses which permit publishing of this project as open source.
+Vinoteque
+---------
+
+This is a simple standalone application for personal use. It is based on Java
+Swing GUI and build with NetBeans, Maven and Spring 3.1.1. This application uses
+HSQLDB embedded database.
+
+The application itself is a virtual winecellar allowing for the management of
+the wine bottles. For now the interface is available only in French.
+
+Technical details
+-----------------
+
+I've used NetBeans Maven project for this application. To build the application
+use Maven command
+
+> mvn assembly:assembly verify
+
+It should build an executable using launch4j plugin. See pom.xml for more details.
+
+
+Useful links
+------------
+
+Launch4j: http://launch4j.sourceforge.net/index.html
+
+HSQLDB: http://hsqldb.org/
+
+
+Copyright disclaimer
+--------------------
+
+To the best of my knowledge all of the code and resources included in this 
+distribution are available under licenses which permit publishing of this project
+as open source.
 
 Some code in this package is based on or inspired by various examples found of Internet:
 http://download.oracle.com/javase/tutorial/uiswing/components/index.html
@@ -8,4 +41,3 @@ https://swinglabs-demos.dev.java.net/
 
 Application icon designer Alexander Moore (GNU/GPL license) available under:
 http://findicons.com/icon/232580/folder_wine?id=232802
-

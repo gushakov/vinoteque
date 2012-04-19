@@ -1,45 +1,43 @@
 package vinoteque.junit;
 
-import viniteque.config.AppConfig;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import java.io.File;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.apache.log4j.Logger;
-import org.junit.Before;
-import org.junit.Test;
 import static org.junit.Assert.*;
-
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
+import viniteque.config.AppConfig;
 import vinoteque.beans.Entry;
-
 import vinoteque.beans.Vin;
+import static vinoteque.beans.Vin.Column.*;
 import vinoteque.db.HsqldbDao;
 import vinoteque.utils.Utils;
 
-import static vinoteque.beans.Vin.Column.*;
-
 /**
- *
+ * Unit tests for data access layer.
  * @author George Ushakov
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes=AppConfig.class)
 public class TestHsqldbDao {
 
     private static final Logger logger = Logger.getLogger(TestHsqldbDao.class);
 
+    @Autowired
     private HsqldbDao dao;
     
-    @Before
-    public void before() throws Exception{
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-        dao = ctx.getBean(HsqldbDao.class);
-    }
-    
-    
-//    @Test
-    public void test() throws Exception {
+    @Test
+    @Transactional
+    public void testDeleteAllEmpty() throws Exception {        
+        assertNotNull(dao);
+        assertTrue(dao.deleteAllEmpty() > 0);        
     }
 
 //    @Test
@@ -67,7 +65,7 @@ public class TestHsqldbDao {
         dao.addVin(v);
     }
 
-    @Test
+//    @Test
     public void testImportFromCsv() throws Exception {
         File csvFile = new File("c:\\vinoteque\\casiers.csv");
         List<Vin> vins = Utils.importVinsFromCsvFile(csvFile);
@@ -75,7 +73,7 @@ public class TestHsqldbDao {
         dao.addVins(vins);
     }
 
-    @Test
+//    @Test
     public void testAddEntries() throws Exception {
         List<Entry> list = dao.getDistinct(REGION);
         list.addAll(dao.getDistinct(APPELLATION));

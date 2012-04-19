@@ -5,61 +5,40 @@
  */
 package vinoteque.gui;
 
-import org.apache.poi.ss.usermodel.Font;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import viniteque.config.AppConfig;
-import java.awt.Desktop;
-import java.io.FileOutputStream;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CreationHelper;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import java.util.Properties;
-import java.util.Date;
-import java.io.File;
 import java.awt.Component;
+import java.awt.Desktop;
 import java.awt.Toolkit;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import javax.swing.JDialog;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.ListModel;
-import javax.swing.ListSelectionModel;
+import java.util.*;
 import javax.swing.RowSorter.SortKey;
-import javax.swing.SortOrder;
-import javax.swing.SwingWorker;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.TableRowSorter;
 import org.apache.log4j.Logger;
-import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.*;
 import org.jdesktop.swingx.JXList;
 import org.jdesktop.swingx.decorator.HighlighterFactory;
-import org.jdesktop.swingx.sort.ListSortController;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import viniteque.config.AppConfig;
 import vinoteque.beans.Entry;
-import vinoteque.db.HsqldbDao;
 import vinoteque.beans.Vin;
 import vinoteque.beans.Vin.Column;
-import vinoteque.utils.Utils;
-
 import static vinoteque.beans.Vin.Column.*;
+import vinoteque.db.HsqldbDao;
+import vinoteque.utils.Utils;
 
 /**
  * Main JFame for the vinoteque application.
@@ -147,8 +126,8 @@ public class MainWindow extends javax.swing.JFrame
                     logger.debug("Modifying " + modifiedVins.size() + " vins in the  database");
                     dao.updateVins(modifiedVins);
                 }
-                tableModel.reset();
                 setProgress(90);
+                tableModel.reset();
                 //record table columns preferred widths
                 for (Column column : Column.values()) {
                     props.put("column."+column+".width",
@@ -403,6 +382,8 @@ public class MainWindow extends javax.swing.JFrame
     }
 
     private void exit() {
+        //delete all empty lines
+        dao.deleteAllEmpty();        
         logger.debug("User ended the application normally.");
         System.exit(0);
     }

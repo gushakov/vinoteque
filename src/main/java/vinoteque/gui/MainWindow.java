@@ -5,9 +5,9 @@
  */
 package vinoteque.gui;
 
-import java.awt.Component;
-import java.awt.Desktop;
-import java.awt.Toolkit;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeEvent;
@@ -18,8 +18,10 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.List;
 import javax.swing.RowSorter.SortKey;
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileFilter;
@@ -28,6 +30,7 @@ import javax.swing.table.TableRowSorter;
 import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Font;
 import org.jdesktop.swingx.JXList;
 import org.jdesktop.swingx.decorator.HighlighterFactory;
 import org.springframework.context.ApplicationContext;
@@ -42,11 +45,12 @@ import vinoteque.utils.Utils;
 
 /**
  * Main JFame for the vinoteque application.
+ *
  * @author George Ushakov
  */
-public class MainWindow extends javax.swing.JFrame 
+public class MainWindow extends javax.swing.JFrame
         implements ListSelectionListener, EditWithFocusListener, PropertyChangeListener,
-                   PreferencesChangeListener {
+        PreferencesChangeListener {
 
     private static final Logger logger = Logger.getLogger(MainWindow.class);
     private Properties props;
@@ -58,13 +62,16 @@ public class MainWindow extends javax.swing.JFrame
     private TableRowSorter tableRowSorter;
     private EntriesComboBoxModel regionsModel;
     private EntriesComboBoxModel appellationsModel;
-    private EntriesComboBoxModel vigneronsModel;    
-    
+    private EntriesComboBoxModel vigneronsModel;
+
     class SaveTask extends SwingWorker<Void, Void> {
+
         private boolean onExit;
+
         public SaveTask(boolean onExit) {
             this.onExit = onExit;
         }
+
         @Override
         protected Void doInBackground() throws Exception {
             try {
@@ -73,7 +80,7 @@ public class MainWindow extends javax.swing.JFrame
                 List<Entry> deletedEntries = regionsModel.getDeletedEntries();
                 deletedEntries.addAll(appellationsModel.getDeletedEntries());
                 deletedEntries.addAll(vigneronsModel.getDeletedEntries());
-                if (deletedEntries.size() > 0){
+                if (deletedEntries.size() > 0) {
                     logger.debug("Deleting " + deletedEntries.size() + " entries from the database");
                     dao.deleteEntries(deletedEntries);
                 }
@@ -82,7 +89,7 @@ public class MainWindow extends javax.swing.JFrame
                 List<Entry> addedEntries = regionsModel.getAddedEntries();
                 addedEntries.addAll(appellationsModel.getAddedEntries());
                 addedEntries.addAll(vigneronsModel.getAddedEntries());
-                if (addedEntries.size() > 0){
+                if (addedEntries.size() > 0) {
                     logger.debug("Adding " + addedEntries.size() + " entries to the database");
                     for (Entry entry : addedEntries) {
                         long id = dao.addEntry(entry);
@@ -95,24 +102,24 @@ public class MainWindow extends javax.swing.JFrame
                 List<Entry> modifiedEntries = regionsModel.getModifiedEntries();
                 modifiedEntries.addAll(appellationsModel.getModifiedEntries());
                 modifiedEntries.addAll(vigneronsModel.getModifiedEntries());
-                if (modifiedEntries.size() > 0){
+                if (modifiedEntries.size() > 0) {
                     logger.debug("Modifying " + modifiedEntries.size() + " entries in the  database");
                     dao.updateEntries(modifiedEntries);
                 }
-               setProgress(50);
+                setProgress(50);
                 regionsModel.reset();
                 appellationsModel.reset();
                 vigneronsModel.reset();
                 //remove deleted vins
                 List<Vin> deletedVins = tableModel.getDeletedVins();
-                if (deletedVins.size()>0){
+                if (deletedVins.size() > 0) {
                     logger.debug("Deleting " + deletedVins.size() + " vins from the database");
                     dao.deleteVins(deletedVins);
                 }
                 setProgress(60);
                 //add new vins
                 List<Vin> addedVins = tableModel.getAddedVins();
-                if (addedVins.size() > 0){
+                if (addedVins.size() > 0) {
                     logger.debug("Adding " + addedVins.size() + " vins to the database");
                     for (Vin vin : addedVins) {
                         long id = dao.addVin(vin);
@@ -123,7 +130,7 @@ public class MainWindow extends javax.swing.JFrame
                 setProgress(75);
                 //update modified vins
                 List<Vin> modifiedVins = tableModel.getModifiedVins();
-                if (modifiedVins.size() > 0){
+                if (modifiedVins.size() > 0) {
                     logger.debug("Modifying " + modifiedVins.size() + " vins in the  database");
                     dao.updateVins(modifiedVins);
                 }
@@ -132,34 +139,30 @@ public class MainWindow extends javax.swing.JFrame
                 //save the properties
                 //record table columns preferred widths
                 for (Column column : Column.values()) {
-                    props.put("column."+column+".width",
-                        ""+jXTable1.getColumnModel().getColumn(column.index()).getPreferredWidth());
+                    props.put("column." + column + ".width",
+                            "" + jXTable1.getColumnModel().getColumn(column.index()).getPreferredWidth());
                 }
                 Utils.writeProperties(props);
-                
-                //TODO: delete empty lines if the properties have been set
-                
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 logger.error(e.getMessage(), e);
                 JOptionPane.showMessageDialog(null, "Erreur est survenue pendant la sauvegarde des données.", "Erreur", JOptionPane.ERROR_MESSAGE);
                 throw e;
-            }
-            finally {
+            } finally {
                 setProgress(100);
-                if (!onExit){
+                if (!onExit) {
                     Thread.sleep(1000);
                     setProgress(0);
                     Toolkit.getDefaultToolkit().beep();
-                }                
+                }
             }
             return null;
         }
     }
 
-    class ExportExcelTask extends SwingWorker<Void, Void>{
+    class ExportExcelTask extends SwingWorker<Void, Void> {
+
         private File xlsFile;
-        private  List<Vin> vins;
+        private List<Vin> vins;
         private boolean withHeaders;
 
         public ExportExcelTask(File xlsFile, boolean withHeaders) {
@@ -183,14 +186,14 @@ public class MainWindow extends javax.swing.JFrame
                 headingStyle.setFont(boldFont);
                 Column[] columns = Column.values();
                 int rowCounter = 0;
-                if (withHeaders){
+                if (withHeaders) {
                     Row row = sheet.createRow(rowCounter);
                     rowCounter++;
                     for (int i = 0; i < columns.length; i++) {
                         Column column = columns[i];
                         Cell cell = row.createCell(i);
                         cell.setCellStyle(headingStyle);
-                        cell.setCellValue(createHelper.createRichTextString(column.getDisplayName()));                    
+                        cell.setCellValue(createHelper.createRichTextString(column.getDisplayName()));
                     }
                 }
                 for (int i = 0; i < vins.size(); i++) {
@@ -202,21 +205,19 @@ public class MainWindow extends javax.swing.JFrame
 
                         Object val = vins.get(i).getColumnValue(column);
                         String text = "";
-                        if (val != null){
-                            if (column == Column.DATE){
+                        if (val != null) {
+                            if (column == Column.DATE) {
                                 text = Vin.dateFormat.format(val);
-                            }
-                            else if (column == Column.PRIX_BTL){
+                            } else if (column == Column.PRIX_BTL) {
                                 text = Vin.currencyFormat.format(val);
-                            }
-                            else {
+                            } else {
                                 text = val.toString();
                             }
                         }
                         //logger.debug("Exporting value " + text + " in vin number " + i + " and column " + column);
-                        cell.setCellValue(createHelper.createRichTextString(text));                    
+                        cell.setCellValue(createHelper.createRichTextString(text));
                     }
-                    setProgress((int)(i * 100 / vins.size()));
+                    setProgress((int) (i * 100 / vins.size()));
                 }
                 FileOutputStream fileOut = new FileOutputStream(xlsFile);
                 wb.write(fileOut);
@@ -227,11 +228,10 @@ public class MainWindow extends javax.swing.JFrame
                 logger.error(e.getMessage(), e);
                 JOptionPane.showMessageDialog(null, "Erreur est survenue pendant l'exportation des données.", "Erreur", JOptionPane.ERROR_MESSAGE);
                 throw e;
-            }
-            finally {
+            } finally {
                 setProgress(100);
                 Thread.sleep(1000);
-                setProgress(0);                
+                setProgress(0);
             }
             return null;
         }
@@ -269,7 +269,8 @@ public class MainWindow extends javax.swing.JFrame
         //initialize the row sorter
         tableRowSorter = new TableRowSorter(tableModel);
 
-        tableRowSorter.setComparator(DATE.index(), new Comparator<Timestamp>(){
+        tableRowSorter.setComparator(DATE.index(), new Comparator<Timestamp>() {
+
             @Override
             public int compare(Timestamp t1, Timestamp t2) {
                 return t1.compareTo(t2);
@@ -282,8 +283,6 @@ public class MainWindow extends javax.swing.JFrame
             public int compare(Integer n1, Integer n2) {
                 return n1.compareTo(n2);
             }
-
-
         });
         tableRowSorter.setComparator(ANNEE.index(), new Comparator<Integer>() {
 
@@ -291,8 +290,6 @@ public class MainWindow extends javax.swing.JFrame
             public int compare(Integer n1, Integer n2) {
                 return n1.compareTo(n2);
             }
-
-
         });
         tableRowSorter.setComparator(STOCK.index(), new Comparator<Integer>() {
 
@@ -300,17 +297,14 @@ public class MainWindow extends javax.swing.JFrame
             public int compare(Integer n1, Integer n2) {
                 return n1.compareTo(n2);
             }
-
-
         });
 
-        tableRowSorter.setComparator(PRIX_BTL.index(), new Comparator<BigDecimal>(){
+        tableRowSorter.setComparator(PRIX_BTL.index(), new Comparator<BigDecimal>() {
 
             @Override
             public int compare(BigDecimal n1, BigDecimal n2) {
                 return n1.compareTo(n2);
             }
-
         });
 
         //setup the list models for the entries
@@ -319,28 +313,26 @@ public class MainWindow extends javax.swing.JFrame
         vigneronsModel = new EntriesComboBoxModel(dao.getEntries(VIGNERON));
     }
 
-    private void doAfterInitComponents(){
+    private void doAfterInitComponents() {
         //enable the update program menu if needed
-        if (! isUpToDate()){
+        if (!isUpToDate()) {
             jMenuItem3.setEnabled(true);
         }
 
         //disable reordering of the columns
         jXTable1.getTableHeader().setReorderingAllowed(false);
-         
+
         //initialize table cell renderers and editors
         jXTable1.getColumnModel().getColumn(DATE.index()).setCellRenderer(new DateRenderer());
-        
+
         jXTable1.getColumnModel().getColumn(DATE.index()).setCellEditor(new DateEditor(Vin.dateFormat, this));
         jXTable1.getColumnModel().getColumn(CASIER.index()).setCellEditor(new NumberEditor());
         jXTable1.getColumnModel().getColumn(ANNEE.index()).setCellEditor(new NumberEditor());
-        jXTable1.getColumnModel().getColumn(PAYS.index())
-                .setCellEditor(new EntryEditor(dao.getDistinct(PAYS), this));
+        jXTable1.getColumnModel().getColumn(PAYS.index()).setCellEditor(new EntryEditor(dao.getDistinct(PAYS), this));
         jXTable1.getColumnModel().getColumn(REGION.index()).setCellEditor(new EntryEditor(regionsModel, this));
         jXTable1.getColumnModel().getColumn(APPELLATION.index()).setCellEditor(new EntryEditor(appellationsModel, this));
         jXTable1.getColumnModel().getColumn(VIGNERON.index()).setCellEditor(new EntryEditor(vigneronsModel, this));
-        jXTable1.getColumnModel().getColumn(QUALITE.index())
-                .setCellEditor(new ListEditor(new String[]{"Rouge", "Blanc", "Rosé", "Divers"}, this));
+        jXTable1.getColumnModel().getColumn(QUALITE.index()).setCellEditor(new ListEditor(new String[]{"Rouge", "Blanc", "Rosé", "Divers"}, this));
         jXTable1.getColumnModel().getColumn(STOCK.index()).setCellEditor(new NumberSpinnerEditor(this));
         jXTable1.getColumnModel().getColumn(PRIX_BTL.index()).setCellRenderer(new CurrencyRenderer());
         jXTable1.getColumnModel().getColumn(PRIX_BTL.index()).setCellEditor(new CurrencyEditor(this));
@@ -352,10 +344,10 @@ public class MainWindow extends javax.swing.JFrame
 
         //set the table rows height
         jXTable1.setRowHeight(20);
-        
+
         for (Column column : Column.values()) {
-            String width = props.getProperty("column."+column+".width");
-            if (width!=null){
+            String width = props.getProperty("column." + column + ".width");
+            if (width != null) {
                 jXTable1.getColumnModel().getColumn(column.index()).setPreferredWidth(Integer.parseInt(width));
             }
         }
@@ -370,7 +362,7 @@ public class MainWindow extends javax.swing.JFrame
         //since they are shared between lists and combo boxes,
         //so need to insert entries in the right order while
         //adding them, see EntriesComboBoxModel.addEntry()
-        
+
         //configure regions list
         jXList3.setModel(regionsModel);
 
@@ -387,23 +379,45 @@ public class MainWindow extends javax.swing.JFrame
     }
 
     private void exit() {
-        logger.debug("User ended the application normally.");
-        dispose();
+        try {
+            logger.debug("User exited the application normally");
+            //delete empties if the user preference is set
+            if (props.getProperty("prefs.delete_empties",
+                    PreferencesPanel.DEFAULT_DELETE_EMPTIES).equals("1") ? true : false) {
+                logger.debug("Deleting all empty lines from the vins table");
+                dao.deleteAllEmpty();
+            }
+            //dispose of the main frame
+            dispose();
+        } catch (Exception e) {
+            //allow the system to exit anyway
+            logger.error(e.getMessage(), e);
+            System.exit(1);
+        }
         System.exit(0);
     }
 
-    /** Creates new form MainWindow */
+    /**
+     * Creates new form MainWindow
+     */
     public MainWindow() {
         super("Vinotèque");
         doBeforeInitComponents();
         initComponents();
         doAfterInitComponents();
+        //try to backup database
+        try {
+            backup();
+        } catch (Exception e) {
+            //allow the system to continue anyway
+            logger.error(e.getMessage(), e);
+        }
     }
 
-    /** This method is called from within the constructor to
-     * initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is
-     * always regenerated by the Form Editor.
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -450,6 +464,7 @@ public class MainWindow extends javax.swing.JFrame
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -817,6 +832,14 @@ public class MainWindow extends javax.swing.JFrame
         });
         jMenu1.add(jMenuItem5);
 
+        jMenuItem6.setText("Restorer la base de données");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem6);
+
         jMenuItem1.setText("Quitter");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -848,7 +871,7 @@ public class MainWindow extends javax.swing.JFrame
         int answer = JOptionPane.showConfirmDialog(null,
                 "Voulez-vous sauvegarder les données modifiées ?",
                 "Confirmer", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (answer==JOptionPane.YES_OPTION){
+        if (answer == JOptionPane.YES_OPTION) {
             save(true);
         }
         exit();
@@ -859,14 +882,14 @@ public class MainWindow extends javax.swing.JFrame
         int answer = JOptionPane.showConfirmDialog(null,
                 "Voulez-vous sauvegarder les données modifiées ?",
                 "Confirmer", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (answer==JOptionPane.YES_OPTION){
+        if (answer == JOptionPane.YES_OPTION) {
             save(true);
         }
         exit();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        if (evt.getKeyCode()== KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             filter();
         }
     }//GEN-LAST:event_jTextField1KeyPressed
@@ -876,11 +899,11 @@ public class MainWindow extends javax.swing.JFrame
         int answer = JOptionPane.showConfirmDialog(null,
                 "Voulez-vous vraiement effaçer les entrées sélectionnées ?",
                 "Confirmer", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (answer==JOptionPane.YES_OPTION){
+        if (answer == JOptionPane.YES_OPTION) {
             //delete selected table rows
             int[] rows = jXTable1.getSelectedRows();
-            for (int i=0; i < rows.length; i++) {
-               tableModel.removeRow(jXTable1.convertRowIndexToModel(rows[0]));
+            for (int i = 0; i < rows.length; i++) {
+                tableModel.removeRow(jXTable1.convertRowIndexToModel(rows[0]));
             }
             tableModel.fireTableDataChanged();
         }
@@ -888,15 +911,15 @@ public class MainWindow extends javax.swing.JFrame
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int index = addEntry(appellationsModel, jTextField2, APPELLATION);
-        if (index>=0){
+        if (index >= 0) {
             jXList1.setSelectedValue(appellationsModel.getElementAt(index), true);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             int index = findFirstSimilarEntry(appellationsModel, jTextField2);
-            if (index>=0){
+            if (index >= 0) {
                 jXList1.requestFocus();
                 jXList1.clearSelection();
                 jXList1.setSelectedValue(appellationsModel.getElementAt(index), true);
@@ -905,26 +928,23 @@ public class MainWindow extends javax.swing.JFrame
     }//GEN-LAST:event_jTextField2KeyPressed
 
     private void jXList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jXList1ValueChanged
-        if (!evt.getValueIsAdjusting()){
-            JXList list = (JXList)evt.getSource();
-            Entry entry = (Entry)list.getSelectedValue();
-            if (entry!=null){
+        if (!evt.getValueIsAdjusting()) {
+            JXList list = (JXList) evt.getSource();
+            Entry entry = (Entry) list.getSelectedValue();
+            if (entry != null) {
                 jTextField2.setText(entry.getName());
-                if (list.getSelectedIndices().length==1){
+                if (list.getSelectedIndices().length == 1) {
                     jButton3.setEnabled(true);
                     jButton4.setEnabled(true);
-                }
-                else {
+                } else {
                     jButton3.setEnabled(false);
                     jButton4.setEnabled(true);
                 }
-            }
-            else {
+            } else {
                 jTextField2.setText("");
-                
+
             }
-        }
-        else {
+        } else {
             jButton3.setEnabled(false);
             jButton4.setEnabled(false);
         }
@@ -933,7 +953,7 @@ public class MainWindow extends javax.swing.JFrame
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int index = jXList1.convertIndexToModel(jXList1.getSelectedIndex());
         boolean modified = modifyEntry(appellationsModel, index, jTextField2);
-        if (modified){
+        if (modified) {
             jXList1.setSelectedValue(appellationsModel.getElementAt(index), true);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -943,21 +963,20 @@ public class MainWindow extends javax.swing.JFrame
         int answer = JOptionPane.showConfirmDialog(null,
                 "Voulez-vous vraiement effaçer les entrées sélectionnées ?",
                 "Confirmer", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (answer==JOptionPane.YES_OPTION){
+        if (answer == JOptionPane.YES_OPTION) {
             //delete selected list entries
             int[] rows = jXList1.getSelectedIndices();
-            for (int i=0; i < rows.length; i++) {
-               appellationsModel.deleteEntryAt(jXList1.convertIndexToModel(rows[0]));
+            for (int i = 0; i < rows.length; i++) {
+                appellationsModel.deleteEntryAt(jXList1.convertIndexToModel(rows[0]));
             }
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         //disable filter
-        if (jCheckBox1.isSelected()){
+        if (jCheckBox1.isSelected()) {
             jCheckBox1.setSelected(false);
-        }
-        else {
+        } else {
             //clear the filter, do not sort
             clearFilter(false);
         }
@@ -977,24 +996,22 @@ public class MainWindow extends javax.swing.JFrame
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jCheckBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox1ItemStateChanged
-        if (evt.getStateChange() == ItemEvent.SELECTED){
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
             jTextField1.setEnabled(true);
             filter();
-        }
-        else {
+        } else {
             jTextField1.setEnabled(false);
             clearFilter(true);
         }
     }//GEN-LAST:event_jCheckBox1ItemStateChanged
 
     private void jToggleButton1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jToggleButton1ItemStateChanged
-        if (evt.getStateChange() == ItemEvent.SELECTED){
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
             unsort();
             for (Column column : Column.values()) {
                 tableRowSorter.setSortable(column.index(), false);
             }
-        }
-        else {
+        } else {
             for (Column column : Column.values()) {
                 tableRowSorter.setSortable(column.index(), true);
             }
@@ -1002,9 +1019,9 @@ public class MainWindow extends javax.swing.JFrame
     }//GEN-LAST:event_jToggleButton1ItemStateChanged
 
     private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             int index = findFirstSimilarEntry(vigneronsModel, jTextField3);
-            if (index>=0){
+            if (index >= 0) {
                 jXList2.requestFocus();
                 jXList2.clearSelection();
                 jXList2.setSelectedValue(vigneronsModel.getElementAt(index), true);
@@ -1014,32 +1031,29 @@ public class MainWindow extends javax.swing.JFrame
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         int index = addEntry(vigneronsModel, jTextField3, VIGNERON);
-        if (index>=0){
+        if (index >= 0) {
             jXList2.setSelectedValue(vigneronsModel.getElementAt(index), true);
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jXList2ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jXList2ValueChanged
-        if (!evt.getValueIsAdjusting()){
-            JXList list = (JXList)evt.getSource();
-            Entry entry = (Entry)list.getSelectedValue();
-            if (entry!=null){
+        if (!evt.getValueIsAdjusting()) {
+            JXList list = (JXList) evt.getSource();
+            Entry entry = (Entry) list.getSelectedValue();
+            if (entry != null) {
                 jTextField3.setText(entry.getName());
-                if (list.getSelectedIndices().length==1){
+                if (list.getSelectedIndices().length == 1) {
                     jButton7.setEnabled(true);
                     jButton8.setEnabled(true);
-                }
-                else {
+                } else {
                     jButton7.setEnabled(false);
                     jButton8.setEnabled(true);
                 }
-            }
-            else {
+            } else {
                 jTextField3.setText("");
 
             }
-        }
-        else {
+        } else {
             jButton7.setEnabled(false);
             jButton8.setEnabled(false);
         }
@@ -1048,7 +1062,7 @@ public class MainWindow extends javax.swing.JFrame
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         int index = jXList2.convertIndexToModel(jXList2.getSelectedIndex());
         boolean modified = modifyEntry(vigneronsModel, index, jTextField3);
-        if (modified){
+        if (modified) {
             jXList2.setSelectedValue(vigneronsModel.getElementAt(index), true);
         }
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -1058,19 +1072,19 @@ public class MainWindow extends javax.swing.JFrame
         int answer = JOptionPane.showConfirmDialog(null,
                 "Voulez-vous vraiement effaçer les entrées sélectionnées ?",
                 "Confirmer", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (answer==JOptionPane.YES_OPTION){
+        if (answer == JOptionPane.YES_OPTION) {
             //delete selected list entries
             int[] rows = jXList2.getSelectedIndices();
-            for (int i=0; i < rows.length; i++) {
-               vigneronsModel.deleteEntryAt(jXList2.convertIndexToModel(rows[0]));
+            for (int i = 0; i < rows.length; i++) {
+                vigneronsModel.deleteEntryAt(jXList2.convertIndexToModel(rows[0]));
             }
         }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             int index = findFirstSimilarEntry(regionsModel, jTextField4);
-            if (index>=0){
+            if (index >= 0) {
                 jXList3.requestFocus();
                 jXList3.clearSelection();
                 jXList3.setSelectedValue(regionsModel.getElementAt(index), true);
@@ -1081,32 +1095,29 @@ public class MainWindow extends javax.swing.JFrame
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         int index = addEntry(regionsModel, jTextField4, REGION);
-        if (index>=0){
+        if (index >= 0) {
             jXList3.setSelectedValue(regionsModel.getElementAt(index), true);
         }
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jXList3ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jXList3ValueChanged
-        if (!evt.getValueIsAdjusting()){
-            JXList list = (JXList)evt.getSource();
-            Entry entry = (Entry)list.getSelectedValue();
-            if (entry!=null){
+        if (!evt.getValueIsAdjusting()) {
+            JXList list = (JXList) evt.getSource();
+            Entry entry = (Entry) list.getSelectedValue();
+            if (entry != null) {
                 jTextField4.setText(entry.getName());
-                if (list.getSelectedIndices().length==1){
+                if (list.getSelectedIndices().length == 1) {
                     jButton10.setEnabled(true);
                     jButton11.setEnabled(true);
-                }
-                else {
+                } else {
                     jButton10.setEnabled(false);
                     jButton11.setEnabled(true);
                 }
-            }
-            else {
+            } else {
                 jTextField4.setText("");
 
             }
-        }
-        else {
+        } else {
             jButton10.setEnabled(false);
             jButton11.setEnabled(false);
         }
@@ -1115,9 +1126,9 @@ public class MainWindow extends javax.swing.JFrame
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         int index = jXList3.convertIndexToModel(jXList3.getSelectedIndex());
         boolean modified = modifyEntry(regionsModel,
-            index,
-            jTextField4);
-        if (modified){
+                index,
+                jTextField4);
+        if (modified) {
             jXList3.setSelectedValue(regionsModel.getElementAt(index), true);
         }
     }//GEN-LAST:event_jButton10ActionPerformed
@@ -1127,11 +1138,11 @@ public class MainWindow extends javax.swing.JFrame
         int answer = JOptionPane.showConfirmDialog(null,
                 "Voulez-vous vraiement effaçer les entrées sélectionnées ?",
                 "Confirmer", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (answer==JOptionPane.YES_OPTION){
+        if (answer == JOptionPane.YES_OPTION) {
             //delete selected list entries
             int[] rows = jXList3.getSelectedIndices();
-            for (int i=0; i < rows.length; i++) {
-               regionsModel.deleteEntryAt(jXList3.convertIndexToModel(rows[0]));
+            for (int i = 0; i < rows.length; i++) {
+                regionsModel.deleteEntryAt(jXList3.convertIndexToModel(rows[0]));
             }
         }
     }//GEN-LAST:event_jButton11ActionPerformed
@@ -1156,25 +1167,72 @@ public class MainWindow extends javax.swing.JFrame
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         SimpleDateFormat format = new SimpleDateFormat("yyMMdd_HHmmss");
         jFileChooser1.setSelectedFile(new File(
-            jFileChooser1.getCurrentDirectory().getAbsolutePath() +
-            "/vinoteque_" + format.format(new Date()) + ".xls"));
+                jFileChooser1.getCurrentDirectory().getAbsolutePath()
+                + "/vinoteque_" + format.format(new Date()) + ".xls"));
 
-       int option = jFileChooser1.showSaveDialog(this);
-       if (option == JFileChooser.APPROVE_OPTION){
+        int option = jFileChooser1.showSaveDialog(this);
+        if (option == JFileChooser.APPROVE_OPTION) {
             exportToExcelFile(jFileChooser1.getSelectedFile(), true);
-       }
+        }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         //show preferences dialog
-        logger.debug("Showing preferences dialog");        
         JDialog dialog = new JDialog(this, "Préférences", true);
-        PreferencesPanel prefsPanel = new PreferencesPanel(this);
-        dialog.getContentPane().add(prefsPanel);
-        dialog.setSize(prefsPanel.getPreferredSize());
+        PreferencesPanel panel = new PreferencesPanel(this);
+        dialog.getContentPane().add(panel);
+        dialog.setSize(panel.getPreferredSize());
         dialog.setLocation(200, 200);
-        dialog.setVisible(true);        
+        dialog.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        //show restore dialog
+        final JDialog dialog = new JDialog(this, "Restorer la base des données", true);
+        JPanel panel1 = new JPanel(new GridLayout(0,1));
+        Border border = BorderFactory.createTitledBorder("Backups disponibles");
+        panel1.setBorder(border);
+        //get backup files, newest first
+        List<File> backupFiles = Utils.getBackupFiles(false);
+        if (backupFiles != null && backupFiles.size() > 0) {
+            ButtonGroup group = new ButtonGroup();
+            for (File file : backupFiles) {
+                AbstractButton radio = new JRadioButton(file.getName());
+                panel1.add(radio);
+                group.add(radio);
+            }
+        }
+        else {
+            logger.warn("No backup files to show in the restore dialog");
+            jPanel1.add(new JLabel("Pas de backups disponible.", SwingConstants.CENTER));
+        }
+        JScrollPane pane = new JScrollPane(panel1);        
+        JPanel panel2 = new JPanel();
+        panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
+        panel2.add(pane);
+        JPanel panel3 = new JPanel();
+        JButton button1 = new JButton("Choisir");
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO: restore
+            }
+        });
+        panel3.add(button1);
+        JButton button2 = new JButton("Annuler");
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dialog.dispose();
+            }
+        });
+        panel3.add(button2);
+        panel2.add(panel3);
+        dialog.getContentPane().add(panel2);        
+        dialog.setSize(400,400);
+        dialog.setLocation(200, 200);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1224,6 +1282,7 @@ public class MainWindow extends javax.swing.JFrame
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1248,104 +1307,99 @@ public class MainWindow extends javax.swing.JFrame
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        if (!e.getValueIsAdjusting()){
-            ListSelectionModel lsm = (ListSelectionModel)e.getSource();
-            if (!lsm.isSelectionEmpty()){
+        if (!e.getValueIsAdjusting()) {
+            ListSelectionModel lsm = (ListSelectionModel) e.getSource();
+            if (!lsm.isSelectionEmpty()) {
                 //adjust the value of the selection total
                 int[] rows = jXTable1.getSelectedRows();
                 BigDecimal total = new BigDecimal(0);
                 boolean outOfView = false;
                 for (int row : rows) {
                     //see if the row is in view
-                    if (row < tableRowSorter.getViewRowCount()){
+                    if (row < tableRowSorter.getViewRowCount()) {
                         Vin vin = tableModel.getVin(jXTable1.convertRowIndexToModel(row));
                         total = total.add(vin.getPrixBtl().multiply(new BigDecimal(vin.getStock())));
-                    }
-                    else {
+                    } else {
                         outOfView = true;
                         break;
                     }
                 }
-                if (!outOfView){
+                if (!outOfView) {
                     jLabel2.setText(Vin.currencyFormat.format(total));
                     //enable the delete row button
                     jButton1.setEnabled(true);
-                }
-                else {
+                } else {
                     jLabel2.setText("");
                     //disable the delete row button
                     jButton1.setEnabled(false);
                 }
-            }
-            else {
+            } else {
                 jLabel2.setText("");
                 //disable the delete row button
                 jButton1.setEnabled(false);
             }
-        }
-        else {
+        } else {
             jLabel2.setText("");
             //disable the delete row button
             jButton1.setEnabled(false);
         }
     }
 
-    private int addEntry(EntriesComboBoxModel model, JTextField textField, Column column){
+    private int addEntry(EntriesComboBoxModel model, JTextField textField, Column column) {
         int index = -1;
         String text = textField.getText();
-        if (text!=null && !text.matches("\\s*")){
+        if (text != null && !text.matches("\\s*")) {
             index = model.addEntry(column, text.trim());
         }
         return index;
     }
 
-    private int findFirstSimilarEntry(EntriesComboBoxModel model, JTextField textField){
+    private int findFirstSimilarEntry(EntriesComboBoxModel model, JTextField textField) {
         int index = -1;
         String text = textField.getText();
-        if (text!=null && !text.matches("\\s*")){
+        if (text != null && !text.matches("\\s*")) {
             index = model.findFirstSimilarEntry(text.trim());
         }
         return index;
     }
 
-    private boolean modifyEntry(EntriesComboBoxModel model, int index, JTextField textField){
+    private boolean modifyEntry(EntriesComboBoxModel model, int index, JTextField textField) {
         boolean modified = false;
         String text = textField.getText();
-        if (text!=null && !text.matches("\\s*")){
+        if (text != null && !text.matches("\\s*")) {
             modified = model.modifyEntryAt(index, textField.getText().trim());
         }
         return modified;
     }
 
-    private void filter(){
+    private void filter() {
         String text = jTextField1.getText();
-        if (text.matches("\\s*")){
+        if (text.matches("\\s*")) {
             //reset filter, show all the entries
             text = "";
         }
         logger.debug("Filtering by " + text);
-        TextRowFilter rowFilter = (TextRowFilter)tableRowSorter.getRowFilter();
-        if (rowFilter!=null){
+        TextRowFilter rowFilter = (TextRowFilter) tableRowSorter.getRowFilter();
+        if (rowFilter != null) {
             rowFilter.setText(text);
             tableRowSorter.sort();
-        }
-        else {
+        } else {
             rowFilter = new TextRowFilter(text, new Column[]{REGION, APPELLATION, VIGNERON});
             tableRowSorter.setRowFilter(rowFilter);
         }
     }
 
-    private void clearFilter(boolean sort){
+    private void clearFilter(boolean sort) {
         TextRowFilter filter = (TextRowFilter) tableRowSorter.getRowFilter();
-        if (filter!=null){
+        if (filter != null) {
             filter.setText("");
-            if (sort){
+            if (sort) {
                 tableRowSorter.sort();
             }
         }
     }
 
-    private void unsort(){
+    private void unsort() {
         //remove sorting
         List<SortKey> sortKeys = tableRowSorter.getSortKeys();
         List<SortKey> newSortKeys = new ArrayList<SortKey>();
@@ -1366,7 +1420,7 @@ public class MainWindow extends javax.swing.JFrame
 
     }
 
-    private void save(boolean onExit){
+    private void save(boolean onExit) {
         SaveTask task = new SaveTask(onExit);
         task.addPropertyChangeListener(this);
         task.execute();
@@ -1380,16 +1434,16 @@ public class MainWindow extends javax.swing.JFrame
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if ("progress".equals(evt.getPropertyName())){
+        if ("progress".equals(evt.getPropertyName())) {
             int progress = (Integer) evt.getNewValue();
             jProgressBar1.setValue(progress);
         }
     }
 
-    private boolean isUpToDate(){
+    private boolean isUpToDate() {
         boolean upToDate = true;
-        if (! props.containsKey("version")
-                || props.getProperty("version").compareTo(appVersion)<0){
+        if (!props.containsKey("version")
+                || props.getProperty("version").compareTo(appVersion) < 0) {
             upToDate = false;
         }
         return upToDate;
@@ -1398,7 +1452,7 @@ public class MainWindow extends javax.swing.JFrame
     /*
      * Performs the upgrade logic.
      */
-    private void upgrade(){
+    private void upgrade() {
         dao.addColumn("vins", "ANNEE_CONSOMMATION", "INTEGER", "0");
     }
 
@@ -1417,11 +1471,30 @@ public class MainWindow extends javax.swing.JFrame
         //copy the preferences to the properties
         Iterator it = preferences.keySet().iterator();
         while (it.hasNext()) {
-            String key = (String)it.next();
-            if (key.startsWith("prefs.")){
+            String key = (String) it.next();
+            if (key.startsWith("prefs.")) {
                 props.put(key, preferences.getProperty(key));
             }
         }
     }
 
+    private void backup() {
+        //get the preferred number of backups
+        int numOfBackups = Integer.parseInt(props.getProperty("prefs.number_of_backups", PreferencesPanel.DEFAULT_NUMBER_OF_BACKUPS));
+        //get the backup files, oldest first
+        List<File> files = Utils.getBackupFiles(true);
+        String path = null;
+        if (files.size() < numOfBackups) {
+            //room for the next backup file
+            path = Utils.backupDatabaseScript();
+        } else {
+            //maximum number of backups exceeded,
+            //overwrite the earliest backup
+            path = Utils.backupDatabaseScript();
+            if (files.size() > 0) {
+                files.get(0).deleteOnExit();
+            }
+        }
+        logger.debug("Backed up the database to " + path);
+    }
 }

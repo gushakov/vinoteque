@@ -6,18 +6,23 @@ import org.apache.log4j.Logger;
 
 /**
  * Extension of the JPanel to hold preferences editor GUI. Registers a
- * <code>PreferencesChangeListener</code> listener which will be notified
- * once the user has changed any preferences.
+ * <code>PreferencesChangeListener</code> listener which will be notified once
+ * the user has changed any preferences.
+ *
  * @author gushakov
  */
 public class PreferencesPanel extends javax.swing.JPanel {
-private static final Logger logger = Logger.getLogger(PreferencesPanel.class);
     
+    public static final String DEFAULT_DELETE_EMPTIES = "0";
+    public static final String DEFAULT_NUMBER_OF_BACKUPS = "10";
+    
+    private static final Logger logger = Logger.getLogger(PreferencesPanel.class);
     private PreferencesChangeListener listener;
     private Properties prefs;
     //delete empty lines on save
     private boolean deleteEmpties;
-    
+    //number of backups
+    private int numOfBackups;
 
     public PreferencesPanel(PreferencesChangeListener prefsChangeListener) {
         listener = prefsChangeListener;
@@ -25,19 +30,32 @@ private static final Logger logger = Logger.getLogger(PreferencesPanel.class);
         doBeforeInitComponents();
         initComponents();
     }
-    
-    private void doBeforeInitComponents(){
-        deleteEmpties = prefs.getProperty("prefs.delete_empties", "0").equals("1")?true:false;
-        logger.debug("Found prefs.delete_empties preference with value " + deleteEmpties);
+
+    private void doBeforeInitComponents() {
+        deleteEmpties = prefs.getProperty("prefs.delete_empties", DEFAULT_DELETE_EMPTIES).equals("1") ? true : false;
+        logger.debug("Found prefs.delete_empties preference with parsed value " + deleteEmpties);
+        String numOfBackupsStr = prefs.getProperty("prefs.number_of_backups", DEFAULT_NUMBER_OF_BACKUPS);
+        int numOfBackupsDefault = Integer.parseInt(DEFAULT_NUMBER_OF_BACKUPS);
+        try {
+            numOfBackups = Integer.parseInt(numOfBackupsStr);
+            //allow only strictly positive number of backups
+            if (numOfBackups <= 0) {
+                numOfBackups = numOfBackupsDefault;
+            }
+        } catch (NumberFormatException e) {
+            numOfBackups = numOfBackupsDefault;
+        }
+        logger.debug("Found prefs.number_of_backups preference with parsed value " + numOfBackups);
     }
-    
+
     /*
      * Serialize preferences to the properties object
      */
-    private void serializePreferences(){
-        prefs.put("prefs.delete_empties", (deleteEmpties?"1":"0"));
+    private void serializePreferences() {
+        prefs.put("prefs.delete_empties", (deleteEmpties ? "1" : "0"));
+        prefs.put("prefs.number_of_backups", Integer.toString(numOfBackups));
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,6 +69,8 @@ private static final Logger logger = Logger.getLogger(PreferencesPanel.class);
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         jButton1.setText("OK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -76,19 +96,33 @@ private static final Logger logger = Logger.getLogger(PreferencesPanel.class);
             }
         });
 
+        jTextField1.setText(Integer.toString(numOfBackups));
+
+        jLabel1.setText("Nombre de backups");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 93, Short.MAX_VALUE)
-                .addComponent(jCheckBox1))
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(81, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jCheckBox1)
-                .addGap(0, 48, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(0, 21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -120,12 +154,24 @@ private static final Logger logger = Logger.getLogger(PreferencesPanel.class);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        logger.debug("Cancel preferences edit, closing the dialog");
         SwingUtilities.getWindowAncestor(this).dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         logger.debug("Done editing preferences, closing the dialog");
+
+        if (jCheckBox1.isSelected()) {
+            deleteEmpties = true;
+        } else {
+            deleteEmpties = false;
+        }
+
+        try {
+            numOfBackups = Integer.parseInt(jTextField1.getText());
+        } catch (NumberFormatException e) {
+            //ignore, keep the last value
+        }
+
         serializePreferences();
         //notify the preferences change listener
         listener.preferencesChanged(prefs);
@@ -133,18 +179,18 @@ private static final Logger logger = Logger.getLogger(PreferencesPanel.class);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jCheckBox1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBox1StateChanged
-            if (jCheckBox1.isSelected()){
-                deleteEmpties = true;
-            }
-            else {
-                deleteEmpties = false;
-            }
+        if (jCheckBox1.isSelected()) {
+            deleteEmpties = true;
+        } else {
+            deleteEmpties = false;
+        }
     }//GEN-LAST:event_jCheckBox1StateChanged
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

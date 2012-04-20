@@ -1,57 +1,45 @@
 package vinoteque.utils;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Comparator;
-import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.Locale;
-import java.util.Properties;
-import java.util.StringTokenizer;
-import java.util.Vector;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.apache.commons.collections.comparators.ReverseComparator;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.RegexFileFilter;
 import org.apache.log4j.Logger;
 import vinoteque.beans.Vin;
 import vinoteque.beans.Vin.Column;
+import static vinoteque.beans.Vin.Column.DATE;
 import vinoteque.exceptions.CsvLineParseException;
 import vinoteque.exceptions.IncorrectFileFormatException;
-
-import static vinoteque.beans.Vin.Column.*;
 
 /**
  *
  * @author George Ushakov
  */
 public class Utils {
-    private static long offset = 0;
 
+    private static long offset = 0;
     private static final Logger logger = Logger.getLogger(Utils.class);
 
     public static class DateComparator implements Comparator<Vin> {
+
         @Override
         public int compare(Vin vin1, Vin vin2) {
             int answer = 0;
-            if (vin1.getDate()!=null && vin2.getDate()!=null){
+            if (vin1.getDate() != null && vin2.getDate() != null) {
                 answer = vin1.getDate().compareTo(vin2.getDate());
             }
             return answer;
         }
     }
 
-    public static Vector<String> getColumnDisplayNames(Column[] columns){
+    public static Vector<String> getColumnDisplayNames(Column[] columns) {
         Vector<String> names = new Vector<String>();
         for (Column column : columns) {
             names.add(column.getDisplayName());
@@ -61,10 +49,9 @@ public class Utils {
 
     public static List<Vin> importVinsFromCsvFile(File csvFile) throws FileNotFoundException, IncorrectFileFormatException {
         SimpleDateFormat dateFormat = null;
-        if (Locale.getDefault().equals(Vin.LOCALE)){
+        if (Locale.getDefault().equals(Vin.LOCALE)) {
             dateFormat = Vin.dateFormat;
-        }
-        else {
+        } else {
             dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         }
         List<Vin> vins = null;
@@ -188,34 +175,38 @@ public class Utils {
         return vins;
     }
 
-    public static void sortVins(Column column, List<Vin> vins){
-        switch (column){
-            case DATE: Collections.sort(vins, new DateComparator()); break;
-            default: throw new UnsupportedOperationException();
+    public static void sortVins(Column column, List<Vin> vins) {
+        switch (column) {
+            case DATE:
+                Collections.sort(vins, new DateComparator());
+                break;
+            default:
+                throw new UnsupportedOperationException();
         }
     }
 
-    public static Date getDate(int year, int month, int day){
+    public static Date getDate(int year, int month, int day) {
         Calendar cal = GregorianCalendar.getInstance(Vin.LOCALE);
         cal.set(year, month, day);
         return cal.getTime();
     }
 
-    public static synchronized long getTimestamp(){
+    public static synchronized long getTimestamp() {
         long timestamp = System.currentTimeMillis() + offset;
         offset++;
         return timestamp;
     }
-    
+
     /**
      * Reads vinoteque.properties file in the application directory and returns
      * the properties object.
+     *
      * @return Properties for the application
      */
-    public static Properties getProperties(){
-        File  file = new File("c:\\vinoteque\\vinoteque.properties");
+    public static Properties getProperties() {
+        File file = new File("c:\\vinoteque\\vinoteque.properties");
         Properties props = new Properties();
-        if (file.exists()){
+        if (file.exists()) {
             try {
                 props.load(new FileInputStream(file));
             } catch (IOException ex) {
@@ -226,10 +217,12 @@ public class Utils {
     }
 
     /**
-     * Writes properties to the file <code>vinoteque.properties</code>
-     * @param props 
+     * Writes properties to the file
+     * <code>vinoteque.properties</code>
+     *
+     * @param props
      */
-    public static void writeProperties(Properties props){
+    public static void writeProperties(Properties props) {
         File file = new File("c:\\vinoteque\\vinoteque.properties");
         try {
             PrintWriter fw = new PrintWriter(new BufferedWriter(new FileWriter(file, false)));
@@ -240,6 +233,38 @@ public class Utils {
             logger.error(ex.getMessage(), ex);
             throw new RuntimeException(ex);
         }
+    }
+
+    public static List<File> getBackupFiles(boolean oldestFirst) {
+        List<File> files = new ArrayList<File>();
+        File backupDir = new File("c:\\vinoteque\\hsqldb\\backup");
+        if (backupDir.exists()) {
+            Pattern pattern = Pattern.compile("data-(\\d+).script", Pattern.CASE_INSENSITIVE);
+            files = new ArrayList<File>(FileUtils.listFiles(backupDir, new RegexFileFilter(pattern), null));
+            if (oldestFirst){
+                Collections.sort(files, new RegexGroupComparator(pattern));    
+            }
+            else {
+                Collections.sort(files, new ReverseComparator(new RegexGroupComparator(pattern)));
+            }
+        }
+        return files;
+    }
+
+    public static String backupDatabaseScript() {
+        Date now = new Date(System.currentTimeMillis());
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMddHHmmss");
+        String ts = fmt.format(now);
+        File src = new File("c:\\vinoteque\\hsqldb\\data.script");
+        File dst = new File("c:\\vinoteque\\hsqldb\\backup\\data-" + ts + ".script");
+        try {
+            FileUtils.forceMkdir(new File("c:\\vinoteque\\hsqldb"));
+            FileUtils.copyFile(src, dst);
+        } catch (IOException ex) {
+            logger.error(ex.getMessage(), ex);
+            throw new RuntimeException(ex);
+        }
+        return dst.getAbsolutePath();
     }
     
 }

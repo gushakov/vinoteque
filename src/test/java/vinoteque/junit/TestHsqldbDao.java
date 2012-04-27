@@ -151,4 +151,10 @@ public class TestHsqldbDao {
     public void testAddColumn() throws Exception {
         dao.addColumn("vins", "ANNEE_CONSOMMATION", "INTEGER", "0");
     }
+    
+    @Test
+    public void testShutdownDatabase() throws Exception {
+        dao.shutdown();
+    }
+
 }

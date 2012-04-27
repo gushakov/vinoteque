@@ -267,4 +267,53 @@ public class Utils {
         return dst.getAbsolutePath();
     }
     
+    public static String getBackupFileInfo(File backupFile){
+        String info = backupFile.getName();
+        
+        Pattern namePattern = Pattern.compile("data-(\\d+)\\.script", Pattern.CASE_INSENSITIVE);
+        Matcher nameMatcher = namePattern.matcher(backupFile.getName());
+        if (nameMatcher.find()){
+            try {
+                SimpleDateFormat fmtIn = new SimpleDateFormat("yyyyMMddHHmmss");
+                SimpleDateFormat fmtOut = new SimpleDateFormat("dd MMMMM yyyy, HH:mm:ss");
+                info = fmtOut.format(fmtIn.parse(nameMatcher.group(1)));
+            } catch (ParseException e) {
+                logger.error("Error parsing backup file name" + backupFile.getAbsolutePath(), e);
+            }
+        }
+        
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new BufferedReader(new FileReader(backupFile))).useDelimiter("\\n");
+            int counter = 0;
+            while (scanner.hasNext()) {
+                String line = scanner.next();
+                Pattern pattern = Pattern.compile("INSERT\\s+INTO\\s+VINS", Pattern.CASE_INSENSITIVE);
+                Matcher matcher = pattern.matcher(line);
+                if (matcher.find()){
+                    counter++;
+                }
+            }
+            info += " (" + counter + " lignes)";
+        } catch (Exception e) {
+            logger.error("Error scanning backup file " + backupFile.getAbsolutePath(), e);
+        } finally {
+            if (scanner != null) {
+                scanner.close();
+            }
+        }
+                
+        return info;
+    }
+    
+    public static void restoreDatabaseScript(File backupFile) {
+        File dst = new File("c:\\vinoteque\\hsqldb\\data.script");
+        try {
+            FileUtils.copyFile(backupFile, dst);
+        } catch (IOException ex) {
+            logger.error(ex.getMessage(), ex);
+            throw new RuntimeException(ex);
+        }        
+    }
+    
 }

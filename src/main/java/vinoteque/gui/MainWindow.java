@@ -142,7 +142,9 @@ public class MainWindow extends javax.swing.JFrame
                     props.put("column." + column + ".width",
                             "" + jXTable1.getColumnModel().getColumn(column.index()).getPreferredWidth());
                 }
-                Utils.writeProperties(props);
+                
+                //save properties
+                Utils.writeProperties(props);                
             } catch (Exception e) {
                 logger.error(e.getMessage(), e);
                 JOptionPane.showMessageDialog(null, "Erreur est survenue pendant la sauvegarde des données.", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -156,6 +158,27 @@ public class MainWindow extends javax.swing.JFrame
                 }
             }
             return null;
+        }
+        
+        @Override
+        protected void done() {
+            if (onExit){
+                try {
+                    //delete empties if the user preference is set
+                    if (props.getProperty("prefs.delete_empties",
+                            PreferencesPanel.DEFAULT_DELETE_EMPTIES).equals("1") ? true : false) {
+                        logger.debug("Deleting all empty lines from the vins table");
+                        dao.deleteAllEmpty();
+                    }                
+                    //backup database
+                    backup();
+                    exit(false);
+                } catch (Exception e) {
+                    //allow the system to continue anyway
+                    logger.error(e.getMessage(), e);
+                }               
+                exit(true);
+            }
         }
     }
 
@@ -234,7 +257,7 @@ public class MainWindow extends javax.swing.JFrame
                 setProgress(0);
             }
             return null;
-        }
+        }        
     }
 
     ////////////////////
@@ -378,23 +401,19 @@ public class MainWindow extends javax.swing.JFrame
         jFileChooser1.setFileFilter(fileFilter);
     }
 
-    private void exit() {
+    private void exit(boolean withShutdown) {
+        logger.debug("User exited the application normally");
+        //shutdown database
         try {
-            logger.debug("User exited the application normally");
-            //delete empties if the user preference is set
-            if (props.getProperty("prefs.delete_empties",
-                    PreferencesPanel.DEFAULT_DELETE_EMPTIES).equals("1") ? true : false) {
-                logger.debug("Deleting all empty lines from the vins table");
-                dao.deleteAllEmpty();
+            if (withShutdown){
+                dao.shutdown();                
             }
-            //dispose of the main frame
-            dispose();
         } catch (Exception e) {
-            //allow the system to exit anyway
-            logger.error(e.getMessage(), e);
-            System.exit(1);
+            logger.error("Error shutting down the database", e);
+        } finally {
+            dispose();
+            System.exit(0);
         }
-        System.exit(0);
     }
 
     /**
@@ -405,13 +424,6 @@ public class MainWindow extends javax.swing.JFrame
         doBeforeInitComponents();
         initComponents();
         doAfterInitComponents();
-        //try to backup database
-        try {
-            backup();
-        } catch (Exception e) {
-            //allow the system to continue anyway
-            logger.error(e.getMessage(), e);
-        }
     }
 
     /**
@@ -447,6 +459,11 @@ public class MainWindow extends javax.swing.JFrame
         jXList3 = new org.jdesktop.swingx.JXList();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jXTable1 = new org.jdesktop.swingx.JXTable();
@@ -458,6 +475,8 @@ public class MainWindow extends javax.swing.JFrame
         jCheckBox1 = new javax.swing.JCheckBox();
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -675,6 +694,43 @@ public class MainWindow extends javax.swing.JFrame
                     .addComponent(jButton11)))
         );
 
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Aide"));
+
+        jLabel5.setText("Ctrl + A = tout séléctionner");
+
+        jLabel6.setText("Ctrl + F = rechercher un mot");
+
+        jLabel7.setText("Ctrl + clic droit = sélectionner plusieurs (un par un)");
+
+        jLabel8.setText("Shift + clic droit = sélection contigue");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -686,7 +742,9 @@ public class MainWindow extends javax.swing.JFrame
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(438, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -695,7 +753,8 @@ public class MainWindow extends javax.swing.JFrame
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -745,7 +804,11 @@ public class MainWindow extends javax.swing.JFrame
             }
         });
 
-        jLabel1.setText("Total de la sélection :");
+        jLabel1.setText("Total :");
+
+        jLabel3.setText("Nombre de bouteilles :");
+
+        jLabel4.setText("0");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -758,7 +821,7 @@ public class MainWindow extends javax.swing.JFrame
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(223, 223, 223)
                 .addComponent(jToggleButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 386, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 451, Short.MAX_VALUE)
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
@@ -766,12 +829,16 @@ public class MainWindow extends javax.swing.JFrame
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 769, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addGap(19, 19, 19))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1249, Short.MAX_VALUE)
+                .addGap(59, 59, 59))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1314, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -789,7 +856,9 @@ public class MainWindow extends javax.swing.JFrame
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
-                        .addComponent(jLabel1))
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel4))
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -874,7 +943,9 @@ public class MainWindow extends javax.swing.JFrame
         if (answer == JOptionPane.YES_OPTION) {
             save(true);
         }
-        exit();
+        else if (answer == JOptionPane.NO_OPTION) {
+            exit(true);
+        }
     }//GEN-LAST:event_handleWindowClosing
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -885,7 +956,9 @@ public class MainWindow extends javax.swing.JFrame
         if (answer == JOptionPane.YES_OPTION) {
             save(true);
         }
-        exit();
+        else if (answer == JOptionPane.NO_OPTION) {
+            exit(true);
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
@@ -1161,7 +1234,7 @@ public class MainWindow extends javax.swing.JFrame
                 + " Vous devez à présent redémarrer l'application.");
         props.setProperty("version", appVersion);
         Utils.writeProperties(props);
-        exit();
+        exit(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -1189,15 +1262,22 @@ public class MainWindow extends javax.swing.JFrame
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         //show restore dialog
         final JDialog dialog = new JDialog(this, "Restorer la base des données", true);
-        JPanel panel1 = new JPanel(new GridLayout(0,1));
+        final JPanel panel1 = new JPanel(new GridLayout(0,1));
         Border border = BorderFactory.createTitledBorder("Backups disponibles");
         panel1.setBorder(border);
         //get backup files, newest first
-        List<File> backupFiles = Utils.getBackupFiles(false);
+        final List<File> backupFiles = Utils.getBackupFiles(false);
+        final ButtonGroup group = new ButtonGroup();
+        final JButton button1 = new JButton("Choisir");
         if (backupFiles != null && backupFiles.size() > 0) {
-            ButtonGroup group = new ButtonGroup();
             for (File file : backupFiles) {
-                AbstractButton radio = new JRadioButton(file.getName());
+                AbstractButton radio = new JRadioButton(Utils.getBackupFileInfo(file));
+                radio.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        button1.setEnabled(true);
+                    }
+                });
                 panel1.add(radio);
                 group.add(radio);
             }
@@ -1211,11 +1291,31 @@ public class MainWindow extends javax.swing.JFrame
         panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
         panel2.add(pane);
         JPanel panel3 = new JPanel();
-        JButton button1 = new JButton("Choisir");
+        button1.setEnabled(false);
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO: restore
+                int selectedIndex = -1;
+                Component[] components = panel1.getComponents();
+                for (int i = 0; i < components.length; i++) {
+                    Component component = components[i];
+                    if (component instanceof AbstractButton){
+                        AbstractButton radio = (AbstractButton) component;
+                        if (radio.isSelected()){
+                            selectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+                if (selectedIndex >= 0){
+                    logger.debug("Restoring to the file " + backupFiles.get(selectedIndex).getAbsolutePath());
+                    dao.shutdown();
+                    Utils.restoreDatabaseScript(backupFiles.get(selectedIndex));
+                    JOptionPane.showMessageDialog(null,
+                        "Relancez l'application pour finaliser la restoration.",
+                        "Redémarrage", JOptionPane.INFORMATION_MESSAGE);
+                }
+                exit(false);
             }
         });
         panel3.add(button1);
@@ -1255,6 +1355,7 @@ public class MainWindow extends javax.swing.JFrame
             @Override
             public void run() {
                 MainWindow win = new MainWindow();
+                win.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 win.setVisible(true);
             }
         });
@@ -1275,6 +1376,12 @@ public class MainWindow extends javax.swing.JFrame
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -1288,6 +1395,7 @@ public class MainWindow extends javax.swing.JFrame
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -1312,12 +1420,14 @@ public class MainWindow extends javax.swing.JFrame
             if (!lsm.isSelectionEmpty()) {
                 //adjust the value of the selection total
                 int[] rows = jXTable1.getSelectedRows();
+                int numOfBottles = 0;
                 BigDecimal total = new BigDecimal(0);
                 boolean outOfView = false;
                 for (int row : rows) {
                     //see if the row is in view
                     if (row < tableRowSorter.getViewRowCount()) {
                         Vin vin = tableModel.getVin(jXTable1.convertRowIndexToModel(row));
+                        numOfBottles += vin.getStock();
                         total = total.add(vin.getPrixBtl().multiply(new BigDecimal(vin.getStock())));
                     } else {
                         outOfView = true;
@@ -1325,20 +1435,24 @@ public class MainWindow extends javax.swing.JFrame
                     }
                 }
                 if (!outOfView) {
+                    jLabel4.setText(Integer.toString(numOfBottles));
                     jLabel2.setText(Vin.currencyFormat.format(total));
                     //enable the delete row button
                     jButton1.setEnabled(true);
                 } else {
+                    jLabel4.setText("");
                     jLabel2.setText("");
                     //disable the delete row button
                     jButton1.setEnabled(false);
                 }
             } else {
+                jLabel4.setText("");
                 jLabel2.setText("");
                 //disable the delete row button
                 jButton1.setEnabled(false);
             }
         } else {
+            jLabel4.setText("");
             jLabel2.setText("");
             //disable the delete row button
             jButton1.setEnabled(false);
@@ -1479,6 +1593,7 @@ public class MainWindow extends javax.swing.JFrame
     }
 
     private void backup() {
+        dao.shutdown();
         //get the preferred number of backups
         int numOfBackups = Integer.parseInt(props.getProperty("prefs.number_of_backups", PreferencesPanel.DEFAULT_NUMBER_OF_BACKUPS));
         //get the backup files, oldest first
@@ -1492,7 +1607,7 @@ public class MainWindow extends javax.swing.JFrame
             //overwrite the earliest backup
             path = Utils.backupDatabaseScript();
             if (files.size() > 0) {
-                files.get(0).deleteOnExit();
+                files.get(0).delete();
             }
         }
         logger.debug("Backed up the database to " + path);

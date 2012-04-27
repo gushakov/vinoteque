@@ -182,6 +182,10 @@ public class HsqldbDao {
         return updateCounts;
     }
     
+    public void shutdown(){
+        jdbcTemplate.getJdbcOperations().execute("SHUTDOWN");
+    }
+    
     /**
      * Executes <code>ALTER TABLE</code> statement to add new column.
      * If <code>defaultValue</code> is specified, then executes <code>UPDATE</code>

@@ -84,7 +84,7 @@ public class CurrencyEditor extends CellEditor {
         else {
             try {
                 fmtTextField.commitEdit();
-            } catch (ParseException ex) {
+            } catch (ParseException e) {
                 //do nothing
             }
             return super.stopCellEditing();

@@ -40,7 +40,7 @@ public class TestHsqldbDao {
         assertTrue(dao.deleteAllEmpty() >= 0);        
     }
 
-//    @Test
+    @Test
     public void testGetAllVins() throws Exception {
         List<Vin> vins = dao.getAllVins();
         assertNotNull(vins);
@@ -152,7 +152,7 @@ public class TestHsqldbDao {
         dao.addColumn("vins", "ANNEE_CONSOMMATION", "INTEGER", "0");
     }
     
-    @Test
+//    @Test
     public void testShutdownDatabase() throws Exception {
         dao.shutdown();
     }

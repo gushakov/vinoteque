@@ -8,3 +8,4 @@ log.txt.*
 nbactions.xml
 /Users/
 /hsqldb/backup/
+!/hsqldb/data.script.example

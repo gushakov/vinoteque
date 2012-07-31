@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
 public class CellEditor extends AbstractCellEditor implements TableCellEditor {
 
     private static final Logger logger = Logger.getLogger(CellEditor.class);
-    public static final Color BG_COLOR = new Color(250, 245, 200);
+    public static final Color BG_COLOR = new Color(255, 248, 220);
 
     @Override
     public boolean isCellEditable(EventObject e) {

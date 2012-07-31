@@ -13,10 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import vinoteque.config.AppConfig;
 import vinoteque.beans.Entry;
 import vinoteque.beans.Vin;
 import static vinoteque.beans.Vin.Column.*;
+import vinoteque.config.AppConfig;
 import vinoteque.db.HsqldbDao;
 import vinoteque.utils.Utils;
 
@@ -40,7 +40,7 @@ public class TestHsqldbDao {
         assertTrue(dao.deleteAllEmpty() >= 0);        
     }
 
-    @Test
+//    @Test
     public void testGetAllVins() throws Exception {
         List<Vin> vins = dao.getAllVins();
         assertNotNull(vins);
@@ -156,5 +156,14 @@ public class TestHsqldbDao {
     public void testShutdownDatabase() throws Exception {
         dao.shutdown();
     }
-
+        
+    @Test
+    @Transactional
+    public void testGroupByCasier() throws Exception {
+        dao.groupByCasier();        
+        for (Vin vin : dao.getAllVins()) {
+            logger.debug(vin.getCasier());
+        }
+    }
+    
 }

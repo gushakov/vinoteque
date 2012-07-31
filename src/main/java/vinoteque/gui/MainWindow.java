@@ -5,7 +5,10 @@
  */
 package vinoteque.gui;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Desktop;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -18,7 +21,6 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.List;
 import javax.swing.RowSorter.SortKey;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -30,7 +32,6 @@ import javax.swing.table.TableRowSorter;
 import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.ss.usermodel.Font;
 import org.jdesktop.swingx.JXList;
 import org.jdesktop.swingx.decorator.HighlighterFactory;
 import org.springframework.context.ApplicationContext;
@@ -164,12 +165,17 @@ public class MainWindow extends javax.swing.JFrame
         protected void done() {
             if (onExit){
                 try {
-                    //delete empties if the user preference is set
+                    //delete empties if the corresponding preference is set
                     if (props.getProperty("prefs.delete_empties",
                             PreferencesPanel.DEFAULT_DELETE_EMPTIES).equals("1") ? true : false) {
                         logger.debug("Deleting all empty lines from the vins table");
                         dao.deleteAllEmpty();
-                    }                
+                    }
+                    //group by casier if the corresponding preference is set
+                    if (props.getProperty("prefs.group_by_casier", PreferencesPanel.DEFAULT_GROUP_BY_CASIER).equals("1") ? true : false){
+                        logger.debug("Grouping vins by casier");
+                        dao.groupByCasier();
+                    }
                     //backup database
                     backup();
                     exit(false);
@@ -1521,6 +1527,8 @@ public class MainWindow extends javax.swing.JFrame
             SortKey newSortKey = new SortKey(sortKey.getColumn(), SortOrder.UNSORTED);
             newSortKeys.add(newSortKey);
         }
+        //sort by caiser if preference is set
+//        newSortKeys.add(new SortKey(CASIER.index(), SortOrder.ASCENDING));
         tableRowSorter.setSortKeys(newSortKeys);
         tableRowSorter.sort();
     }

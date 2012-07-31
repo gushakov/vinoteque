@@ -11,11 +11,13 @@ import vinoteque.utils.Utils;
 
 /**
  * Bean representing a wine.
+ *
  * @author George Ushakov
  */
 public class Vin implements Serializable {
 
     public static enum Column {
+
         DATE("Date"),
         CASIER("Casier"),
         ANNEE("Année"),
@@ -27,10 +29,10 @@ public class Vin implements Serializable {
         STOCK("Stock"),
         PRIX_BTL("Prix par bouteille"),
         ANNEE_CONSOMMATION("Année de consommation");
-
         private String displayName;
-        private Column(String displayName){
-           this.displayName = displayName;
+
+        private Column(String displayName) {
+            this.displayName = displayName;
         }
 
         public String getDisplayName() {
@@ -38,14 +40,12 @@ public class Vin implements Serializable {
         }
 
         public int index() {
-            return  Arrays.asList(values()).indexOf(this);
+            return Arrays.asList(values()).indexOf(this);
         }
     };
-
     public static final Locale LOCALE = new Locale("fr", "CH");
     public static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", LOCALE);
     public static NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(LOCALE);
-
     private long timestamp;
     private boolean modified;
     private long id;
@@ -62,61 +62,106 @@ public class Vin implements Serializable {
     private int anneeConsommation;
 
     public Vin() {
-        timestamp =  Utils.getTimestamp();
+        timestamp = Utils.getTimestamp();
         modified = false;
         id = -1;
     }
 
-    public Object getColumnValue(Column column){
+    public Object getColumnValue(Column column) {
         Object value = null;
         switch (column) {
-            case DATE: value = date; break;
-            case CASIER: value = casier; break;
-            case ANNEE: value = annee; break;
-            case PAYS: value = pays; break;
-            case REGION: value = region; break;
-            case APPELLATION: value = appellation; break;
-            case VIGNERON: value = vigneron; break;
-            case QUALITE: value = qualite; break;
-            case STOCK: value = stock; break;
-            case PRIX_BTL: value = prixBtl; break;
-            case ANNEE_CONSOMMATION: value = anneeConsommation; break;
-            default: throw new UnsupportedOperationException("Unknown column " + column);
+            case DATE:
+                value = date;
+                break;
+            case CASIER:
+                value = casier;
+                break;
+            case ANNEE:
+                value = annee;
+                break;
+            case PAYS:
+                value = pays;
+                break;
+            case REGION:
+                value = region;
+                break;
+            case APPELLATION:
+                value = appellation;
+                break;
+            case VIGNERON:
+                value = vigneron;
+                break;
+            case QUALITE:
+                value = qualite;
+                break;
+            case STOCK:
+                value = stock;
+                break;
+            case PRIX_BTL:
+                value = prixBtl;
+                break;
+            case ANNEE_CONSOMMATION:
+                value = anneeConsommation;
+                break;
+            default:
+                throw new UnsupportedOperationException("Unknown column " + column);
         }
         return value;
     }
 
-    public void setColumnValue(Column column, Object value){
+    public void setColumnValue(Column column, Object value) {
         switch (column) {
-            case DATE: setDate((Date)value); break;
-            case CASIER: setCasier((Integer)value); break;
-            case ANNEE: setAnnee((Integer)value); break;
-            case PAYS: setPays((String)value); break;
-            case REGION: setRegion((String)value); break;
-            case APPELLATION: setAppellation((String)value); break;
-            case VIGNERON: setVigneron((String)value); break;
-            case QUALITE: setQualite((String)value); break;
-            case STOCK: setStock((Integer)value); break;
-            case PRIX_BTL: setPrixBtl((BigDecimal)value); break;
-            case ANNEE_CONSOMMATION: setAnneeConsommation((Integer)value); break;
-            default: throw new UnsupportedOperationException("Unknown column " + column);
+            case DATE:
+                setDate((Date) value);
+                break;
+            case CASIER:
+                setCasier((Integer) value);
+                break;
+            case ANNEE:
+                setAnnee((Integer) value);
+                break;
+            case PAYS:
+                setPays((String) value);
+                break;
+            case REGION:
+                setRegion((String) value);
+                break;
+            case APPELLATION:
+                setAppellation((String) value);
+                break;
+            case VIGNERON:
+                setVigneron((String) value);
+                break;
+            case QUALITE:
+                setQualite((String) value);
+                break;
+            case STOCK:
+                setStock((Integer) value);
+                break;
+            case PRIX_BTL:
+                setPrixBtl((BigDecimal) value);
+                break;
+            case ANNEE_CONSOMMATION:
+                setAnneeConsommation((Integer) value);
+                break;
+            default:
+                throw new UnsupportedOperationException("Unknown column " + column);
         }
     }
 
     @Override
     public boolean equals(Object obj) {
         boolean answer = false;
-        if (obj instanceof Vin){
-            Vin vin = (Vin)obj;
+        if (obj instanceof Vin) {
+            Vin vin = (Vin) obj;
             //compare by ids if set
-            if (id != -1 && vin.id != -1){
-                if (id == vin.id){
+            if (id != -1 && vin.id != -1) {
+                if (id == vin.id) {
                     answer = true;
                 }
-            }
-            else {
+            } else {
                 //otherwise compare by the timestamps
-                if (timestamp == vin.timestamp){
+                if (timestamp == vin.timestamp) {
                     answer = true;
                 }
             }
@@ -129,6 +174,11 @@ public class Vin implements Serializable {
         int hash = 3;
         hash = 29 * hash + (int) (this.timestamp ^ (this.timestamp >>> 32));
         return hash;
+    }
+
+    @Override
+    public String toString() {
+        return "Vin{" + "timestamp=" + timestamp + ", modified=" + modified + ", id=" + id + ", date=" + date + ", casier=" + casier + ", annee=" + annee + ", pays=" + pays + ", region=" + region + ", appellation=" + appellation + ", vigneron=" + vigneron + ", qualite=" + qualite + ", stock=" + stock + ", prixBtl=" + prixBtl + ", anneeConsommation=" + anneeConsommation + '}';
     }
 
     public int getAnnee() {

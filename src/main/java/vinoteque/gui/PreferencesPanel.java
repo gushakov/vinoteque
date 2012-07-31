@@ -15,6 +15,7 @@ public class PreferencesPanel extends javax.swing.JPanel {
     
     public static final String DEFAULT_DELETE_EMPTIES = "0";
     public static final String DEFAULT_NUMBER_OF_BACKUPS = "10";
+    public static final String DEFAULT_GROUP_BY_CASIER = "1";
     
     private static final Logger logger = Logger.getLogger(PreferencesPanel.class);
     private PreferencesChangeListener listener;
@@ -23,7 +24,9 @@ public class PreferencesPanel extends javax.swing.JPanel {
     private boolean deleteEmpties;
     //number of backups
     private int numOfBackups;
-
+    //group by casier on save
+    private boolean groupByCasier;
+    
     public PreferencesPanel(PreferencesChangeListener prefsChangeListener) {
         listener = prefsChangeListener;
         prefs = prefsChangeListener.getPreferences();
@@ -46,6 +49,8 @@ public class PreferencesPanel extends javax.swing.JPanel {
             numOfBackups = numOfBackupsDefault;
         }
         logger.debug("Found prefs.number_of_backups preference with parsed value " + numOfBackups);
+        groupByCasier = prefs.getProperty("prefs.group_by_casier", DEFAULT_GROUP_BY_CASIER).equals("1") ? true : false;
+        logger.debug("Found prefs.group_by_casier with parsed value " + groupByCasier);
     }
 
     /*
@@ -54,6 +59,7 @@ public class PreferencesPanel extends javax.swing.JPanel {
     private void serializePreferences() {
         prefs.put("prefs.delete_empties", (deleteEmpties ? "1" : "0"));
         prefs.put("prefs.number_of_backups", Integer.toString(numOfBackups));
+        prefs.put("prefs.group_by_casier", (groupByCasier ? "1" : "0"));
     }
 
     /**
@@ -71,6 +77,7 @@ public class PreferencesPanel extends javax.swing.JPanel {
         jCheckBox1 = new javax.swing.JCheckBox();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jCheckBox2 = new javax.swing.JCheckBox();
 
         jButton1.setText("OK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -100,29 +107,41 @@ public class PreferencesPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Nombre de backups");
 
+        jCheckBox2.setSelected(groupByCasier);
+        jCheckBox2.setText("Regrouper par casier");
+        jCheckBox2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBox2StateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(81, Short.MAX_VALUE)
+                .addContainerGap(130, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                    .addComponent(jCheckBox2)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(62, 62, 62)))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jCheckBox1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(0, 21, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -138,14 +157,14 @@ public class PreferencesPanel extends javax.swing.JPanel {
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -171,6 +190,13 @@ public class PreferencesPanel extends javax.swing.JPanel {
         } catch (NumberFormatException e) {
             //ignore, keep the last value
         }
+        
+        if (jCheckBox2.isSelected()){
+            groupByCasier = true;
+        }
+        else {
+            groupByCasier = false;
+        }
 
         serializePreferences();
         //notify the preferences change listener
@@ -185,10 +211,21 @@ public class PreferencesPanel extends javax.swing.JPanel {
             deleteEmpties = false;
         }
     }//GEN-LAST:event_jCheckBox1StateChanged
+
+    private void jCheckBox2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBox2StateChanged
+        if (jCheckBox2.isSelected()){
+            groupByCasier = true;
+        }
+        else {
+            groupByCasier = false;
+        }
+    }//GEN-LAST:event_jCheckBox2StateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;

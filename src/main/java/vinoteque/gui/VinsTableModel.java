@@ -11,9 +11,8 @@ import org.apache.log4j.Logger;
 import vinoteque.beans.Entry;
 import vinoteque.beans.Vin;
 import vinoteque.beans.Vin.Column;
+import static vinoteque.beans.Vin.Column.*;
 import vinoteque.utils.Utils;
-
-import static  vinoteque.beans.Vin.Column.*;
 
 /**
  *

@@ -381,6 +381,9 @@ public class MainWindow extends javax.swing.JFrame
             }
         }
 
+        //disable insert row button
+        jButton12.setEnabled(false);
+        
         //disable delete rows button
         jButton1.setEnabled(false);
 
@@ -483,6 +486,7 @@ public class MainWindow extends javax.swing.JFrame
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton12 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -816,6 +820,13 @@ public class MainWindow extends javax.swing.JFrame
 
         jLabel4.setText("0");
 
+        jButton12.setText("Insérer");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -827,8 +838,10 @@ public class MainWindow extends javax.swing.JFrame
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(223, 223, 223)
                 .addComponent(jToggleButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 451, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addContainerGap())
@@ -855,7 +868,8 @@ public class MainWindow extends javax.swing.JFrame
                     .addComponent(jButton5)
                     .addComponent(jCheckBox1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton1))
+                    .addComponent(jToggleButton1)
+                    .addComponent(jButton12))
                 .addGap(11, 11, 11)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1071,7 +1085,7 @@ public class MainWindow extends javax.swing.JFrame
         jXTable1.setRowSelectionInterval(viewRow, viewRow);
 
         //scroll to the first row
-        jXTable1.scrollRowToVisible(viewRow);
+        jXTable1.scrollRowToVisible(viewRow);    
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jCheckBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox1ItemStateChanged
@@ -1340,6 +1354,30 @@ public class MainWindow extends javax.swing.JFrame
         dialog.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        //disable filter
+        if (jCheckBox1.isSelected()) {
+            jCheckBox1.setSelected(false);
+        } else {
+            //clear the filter, do not sort
+            clearFilter(false);
+        }
+
+        //remove sorting
+        unsort();
+
+        //insert after the first selected row
+        int row = jXTable1.getSelectedRow() + 1;        
+        tableModel.insertNewVin(row);
+
+        //select the first row, should be the one we just added
+        int viewRow = jXTable1.convertRowIndexToView(row);
+        jXTable1.setRowSelectionInterval(viewRow, viewRow);
+
+        //scroll to the first row
+        jXTable1.scrollRowToVisible(viewRow);
+    }//GEN-LAST:event_jButton12ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1370,6 +1408,7 @@ public class MainWindow extends javax.swing.JFrame
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1443,23 +1482,37 @@ public class MainWindow extends javax.swing.JFrame
                 if (!outOfView) {
                     jLabel4.setText(Integer.toString(numOfBottles));
                     jLabel2.setText(Vin.currencyFormat.format(total));
+                    //enable the insert row button if there is one row selected
+                    if (rows.length==1){
+                        jButton12.setEnabled(true);                        
+                    }
+                    else {
+                        //disable the insert row button
+                        jButton12.setEnabled(false);
+                    }
                     //enable the delete row button
                     jButton1.setEnabled(true);
                 } else {
                     jLabel4.setText("");
                     jLabel2.setText("");
+                    //disable the insert row button
+                    jButton12.setEnabled(false);
                     //disable the delete row button
                     jButton1.setEnabled(false);
                 }
             } else {
                 jLabel4.setText("");
                 jLabel2.setText("");
+                //disable the insert row button
+                jButton12.setEnabled(false);
                 //disable the delete row button
                 jButton1.setEnabled(false);
             }
         } else {
             jLabel4.setText("");
             jLabel2.setText("");
+            //disable the insert row button
+            jButton12.setEnabled(false);
             //disable the delete row button
             jButton1.setEnabled(false);
         }

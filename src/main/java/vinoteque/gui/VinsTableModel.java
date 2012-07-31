@@ -177,6 +177,30 @@ public class VinsTableModel extends DefaultTableModel {
         addRow(rowData);
         return row;
     }
+    
+    public void insertNewVin(int row){
+        Vin vin = new Vin();
+        vin.setDate(new Timestamp(new Date().getTime()));
+        //set the same casier as the row above,
+        //row should always be greater or equal to one
+        vin.setCasier(allVins.get(row-1).getCasier());
+        vin.setAnnee(0);
+        vin.setPays("");
+        vin.setRegion("");
+        vin.setAppellation("");
+        vin.setVigneron("");
+        vin.setQualite("");
+        vin.setStock(0);
+        vin.setPrixBtl(new BigDecimal(0.0));
+
+        allVins.add(row, vin);
+
+        Vector<Object> rowData = new Vector<Object>();
+        for (Column column : columns) {
+            rowData.add(vin.getColumnValue(column));
+        }
+        insertRow(row, rowData);
+    }
 
     public List<Vin> getAddedVins(){
         ArrayList<Vin> list = new ArrayList<Vin>();

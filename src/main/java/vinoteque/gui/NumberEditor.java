@@ -49,7 +49,7 @@ public class NumberEditor extends CellEditor {
                 intValue = (Integer)value;
             }
             else {
-                throw new UnsupportedOperationException("Cannot convert value of type " + value.getClass().getCanonicalName() + " to integer");
+                intValue = 0;
             }
         }
         else {

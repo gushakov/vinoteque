@@ -1,14 +1,11 @@
 package vinoteque.gui;
 
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.EventObject;
-import java.util.logging.Level;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
 import org.apache.log4j.Logger;
@@ -71,6 +68,7 @@ public class DateEditor extends DatePickerCellEditor {
             datePickerComponent.getEditor().setText(String.valueOf(editChar));
             editChar = (char)0;
         }
+        datePickerComponent.getEditor().setBackground(CellEditor.BG_COLOR);
         return datePickerComponent;
     }
     

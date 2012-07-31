@@ -289,7 +289,8 @@ public class MainWindow extends javax.swing.JFrame
             QUALITE,
             STOCK,
             PRIX_BTL,
-            ANNEE_CONSOMMATION
+            ANNEE_CONSOMMATION,
+            COMMENTAIRE
         };
 
         //initialize table model
@@ -367,7 +368,8 @@ public class MainWindow extends javax.swing.JFrame
         jXTable1.getColumnModel().getColumn(PRIX_BTL.index()).setCellEditor(new CurrencyEditor(this));
         jXTable1.getColumnModel().getColumn(ANNEE_CONSOMMATION.index()).setCellRenderer(new YearRenderer());
         jXTable1.getColumnModel().getColumn(ANNEE_CONSOMMATION.index()).setCellEditor(new NumberEditor());
-
+        jXTable1.getColumnModel().getColumn(COMMENTAIRE.index()).setCellEditor(new TextEditor());
+        
         //set the selection listeners
         jXTable1.getSelectionModel().addListSelectionListener(this);
 
@@ -490,6 +492,7 @@ public class MainWindow extends javax.swing.JFrame
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -830,6 +833,13 @@ public class MainWindow extends javax.swing.JFrame
             }
         });
 
+        jButton13.setText("Filtrer");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -839,7 +849,9 @@ public class MainWindow extends javax.swing.JFrame
                 .addComponent(jCheckBox1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(223, 223, 223)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton13)
+                .addGap(136, 136, 136)
                 .addComponent(jToggleButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton5)
@@ -872,7 +884,8 @@ public class MainWindow extends javax.swing.JFrame
                     .addComponent(jCheckBox1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jToggleButton1)
-                    .addComponent(jButton12))
+                    .addComponent(jButton12)
+                    .addComponent(jButton13))
                 .addGap(11, 11, 11)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1094,9 +1107,11 @@ public class MainWindow extends javax.swing.JFrame
     private void jCheckBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox1ItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             jTextField1.setEnabled(true);
+            jButton13.setEnabled(true);
             filter();
         } else {
             jTextField1.setEnabled(false);
+            jButton13.setEnabled(false);
             clearFilter(true);
         }
     }//GEN-LAST:event_jCheckBox1ItemStateChanged
@@ -1253,7 +1268,7 @@ public class MainWindow extends javax.swing.JFrame
         jMenuItem3.setEnabled(false);
         JOptionPane.showMessageDialog(this,
                 "L'application a été mise à jour."
-                + " Version courante est " + appVersion + "."
+                + " Version actuelle est " + appVersion + "."
                 + " Vous devez à présent redémarrer l'application.");
         props.setProperty("version", appVersion);
         Utils.writeProperties(props);
@@ -1381,6 +1396,10 @@ public class MainWindow extends javax.swing.JFrame
         jXTable1.scrollRowToVisible(viewRow);
     }//GEN-LAST:event_jButton12ActionPerformed
 
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        filter();
+    }//GEN-LAST:event_jButton13ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1412,6 +1431,7 @@ public class MainWindow extends javax.swing.JFrame
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1560,8 +1580,7 @@ public class MainWindow extends javax.swing.JFrame
             logger.debug("Filtering by " + text);
             tableRowSorter.sort();
         } else {
-            rowFilter = new TextRowFilter(text, new Column[]{CASIER, REGION, APPELLATION, VIGNERON},
-                    new boolean[]{true, false, false, false});
+            rowFilter = new TextRowFilter(text, new Column[]{CASIER, REGION, APPELLATION, VIGNERON});
             logger.debug("Setting up row filter");
             tableRowSorter.setRowFilter(rowFilter);
         }
@@ -1631,7 +1650,11 @@ public class MainWindow extends javax.swing.JFrame
      * Performs the upgrade logic.
      */
     private void upgrade() {
-        dao.addColumn("vins", "ANNEE_CONSOMMATION", "INTEGER", "0");
+        //upgrade to version 1.2
+        //dao.addColumn("vins", "ANNEE_CONSOMMATION", "INTEGER", "0");
+        
+        //upgrade to version 1.3
+        dao.addColumn("vins", COMMENTAIRE.name(), "VARCHAR(1000)", null);
     }
 
     @Override

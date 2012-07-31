@@ -69,6 +69,7 @@ public class CurrencyEditor extends CellEditor {
             fmtTextField.setValue(new BigDecimal(0));
         }
         fmtTextField.selectAll();
+        fmtTextField.setBackground(CellEditor.BG_COLOR);
         return fmtTextField;
     }
 

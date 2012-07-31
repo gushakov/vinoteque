@@ -128,6 +128,10 @@ public class VinsTableModel extends DefaultTableModel {
             oldValue = vin.getAnneeConsommation();
             newValue = (Integer)aValue;
         }
+        else if (column==COMMENTAIRE.index()){
+            oldValue = vin.getCommentaire();
+            newValue = (String)aValue;
+        }
         else {
             throw new UnsupportedOperationException("Unknown column " + column);
         }

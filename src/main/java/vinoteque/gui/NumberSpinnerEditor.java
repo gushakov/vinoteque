@@ -77,6 +77,7 @@ public class NumberSpinnerEditor extends CellEditor {
         else {
             spinner.setValue(0);
         }
+        ((JSpinner.DefaultEditor)spinner.getEditor()).getTextField().setBackground(CellEditor.BG_COLOR);
         return spinner;
     }
 

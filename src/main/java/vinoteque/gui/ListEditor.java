@@ -69,6 +69,7 @@ public class ListEditor extends CellEditor {
         else {
             cmb.getEditor().setItem("");
         }
+        cmb.setBackground(CellEditor.BG_COLOR);
         return cmb;
     }
 }

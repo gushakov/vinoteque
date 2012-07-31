@@ -6,11 +6,8 @@ import vinoteque.beans.Vin.Column;
 
 /**
  * Table row filter. Used by {@linkplain javax.swing.table.TableRowSorter} to
- * filter only the rows where the row has matching string values in the specified columns.
- * The matching is based on {@linkplain String#equalsIgnoreCase(java.lang.String)}
- * if <code>isExact</code> is <code>true</code> for the corresponding column value
- * or based on {@linkplain String#matches(java.lang.String)} (anywhere in the matching value)
- * otherwise.
+ * filter only the rows where the row has matching string values in the
+ * specified columns.
  *
  * @author George Ushakov
  */
@@ -18,12 +15,10 @@ public class TextRowFilter extends RowFilter<Object, Object> {
 
     private String text;
     private Column[] columns;
-    private boolean[] isExact;
 
-    public TextRowFilter(String text, Column[] columns, boolean[] isExact) {
+    public TextRowFilter(String text, Column[] columns) {
         this.text = text;
         this.columns = columns;
-        this.isExact = isExact;
     }
 
     public Column[] getColumns() {
@@ -52,16 +47,18 @@ public class TextRowFilter extends RowFilter<Object, Object> {
                 Column column = columns[i];
                 String value = entry.getStringValue(column.index());
                 if (value != null && !value.matches("\\s*")) {
-                    if (isExact[i]) {
+                    //see if we are searching by a casier number                    
+                    if (text.matches("\\d{1,2}")) {
                         if (value.equalsIgnoreCase(text)) {
                             answer = true;
                             break;
                         }
-                    } else {
-                        if (value.toLowerCase().matches(".*" + text.toLowerCase() + ".*")) {
+                    }
+                    else{
+                        if (value.toLowerCase().contains(text.toLowerCase())) {
                             answer = true;
                             break;
-                        }
+                        }                        
                     }
                 }
             }

@@ -5,7 +5,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
- *
+ * Cell editor which uses {@linkplain javax.swing.JTextField} component
+ * for editing cell values.
  * @author George Ushakov
  */
 public class TextEditor extends CellEditor {
@@ -26,7 +27,11 @@ public class TextEditor extends CellEditor {
         if (value!=null){
             textField.setText(value.toString());
         }
+        else {
+            textField.setText("");
+        }
         textField.selectAll();
+        textField.setBackground(CellEditor.BG_COLOR);
         return textField;
     }
 

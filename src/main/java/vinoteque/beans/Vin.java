@@ -28,7 +28,8 @@ public class Vin implements Serializable {
         QUALITE("Qualité"),
         STOCK("Stock"),
         PRIX_BTL("Prix par bouteille"),
-        ANNEE_CONSOMMATION("Année de consommation");
+        ANNEE_CONSOMMATION("A consommer"),
+        COMMENTAIRE("Commentaire");
         private String displayName;
 
         private Column(String displayName) {
@@ -60,6 +61,7 @@ public class Vin implements Serializable {
     private int stock;
     private BigDecimal prixBtl;
     private int anneeConsommation;
+    private String commentaire;
 
     public Vin() {
         timestamp = Utils.getTimestamp();
@@ -103,6 +105,9 @@ public class Vin implements Serializable {
             case ANNEE_CONSOMMATION:
                 value = anneeConsommation;
                 break;
+            case COMMENTAIRE:
+                value = commentaire;
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown column " + column);
         }
@@ -143,6 +148,9 @@ public class Vin implements Serializable {
                 break;
             case ANNEE_CONSOMMATION:
                 setAnneeConsommation((Integer) value);
+                break;
+            case COMMENTAIRE:
+                setCommentaire((String) value);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown column " + column);
@@ -292,4 +300,12 @@ public class Vin implements Serializable {
     public void setAnneeConsommation(int anneeConsommation) {
         this.anneeConsommation = anneeConsommation;
     }
+
+    public String getCommentaire() {
+        return commentaire;
+    }
+
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
+    }    
 }

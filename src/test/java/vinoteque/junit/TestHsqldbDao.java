@@ -149,7 +149,7 @@ public class TestHsqldbDao {
 
 //    @Test
     public void testAddColumn() throws Exception {
-        dao.addColumn("vins", "ANNEE_CONSOMMATION", "INTEGER", "0");
+        dao.addColumn("vins", COMMENTAIRE.name(), "VARCHAR(1000)", null);
     }
     
 //    @Test
@@ -157,7 +157,7 @@ public class TestHsqldbDao {
         dao.shutdown();
     }
         
-    @Test
+//    @Test
     @Transactional
     public void testGroupByCasier() throws Exception {
         dao.groupByCasier();        

@@ -8,7 +8,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
 
 /**
- *
+ * Cell editor for the number values in the format <code>##0</code>.
  * @author George Ushakov
  */
 public class NumberEditor extends CellEditor {
@@ -67,6 +67,7 @@ public class NumberEditor extends CellEditor {
             fmtTextField.setValue(new Integer(0));
         }
         fmtTextField.selectAll();
+        fmtTextField.setBackground(CellEditor.BG_COLOR);
         return fmtTextField;
     }
 

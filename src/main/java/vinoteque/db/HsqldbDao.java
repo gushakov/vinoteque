@@ -146,7 +146,8 @@ public class HsqldbDao {
                 + "qualite = ? and "
                 + "stock = ? and "
                 + "prix_btl = ? and "
-                + "annee_consommation = ?",
+                + "annee_consommation = ? and "
+                + "commentaire = ?",
                 0, //casier
                 "", //appellation
                 0, //annee
@@ -156,7 +157,8 @@ public class HsqldbDao {
                 "", //qualite
                 0, //stock
                 new BigDecimal(0d), //prix_btl
-                0);                 //annee_consommation
+                0, //annee_consommation
+                "");                    //commentaire
 
         return deleteCounts;
     }
@@ -164,7 +166,7 @@ public class HsqldbDao {
     public int[] updateVins(List<Vin> vins) {
         SqlParameterSource[] batch = SqlParameterSourceUtils.createBatch(vins.toArray(new Vin[]{}));
         int[] updateCounts = jdbcTemplate.batchUpdate(
-                "update public.vins set date = :date, casier = :casier, annee = :annee, pays = :pays, region = :region, appellation = :appellation, vigneron = :vigneron, qualite = :qualite, stock = :stock, prix_btl = :prixBtl, annee_consommation = :anneeConsommation where id = :id",
+                "update public.vins set date = :date, casier = :casier, annee = :annee, pays = :pays, region = :region, appellation = :appellation, vigneron = :vigneron, qualite = :qualite, stock = :stock, prix_btl = :prixBtl, annee_consommation = :anneeConsommation, commentaire = :commentaire where id = :id",
                 batch);
         return updateCounts;
     }
@@ -192,7 +194,8 @@ public class HsqldbDao {
      * @param columnName name of the new column
      * @param columnType HSQL compatible type name
      * @param defaultValue default value to set in the column for all table
-     * entries
+     * entries, ignored if
+     * <code>null</code>
      * @see JdbcOperations#execute(java.lang.String)
      */
     public void addColumn(String tableName, String columnName, String columnType, String defaultValue) {

@@ -9,5 +9,7 @@ create table public.vins (
     vigneron varchar(100),
     qualite varchar(5),
     stock int,
-    prix_btl decimal(10,2)
+    prix_btl decimal(100),
+    annee_consommation integer,
+    commentaire varchar(1000)
 );

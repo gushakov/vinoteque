@@ -386,6 +386,9 @@ public class MainWindow extends javax.swing.JFrame
         
         //disable delete rows button
         jButton1.setEnabled(false);
+        
+        //select "Sans Tri"
+        jToggleButton1.setSelected(true);
 
         //configure confirmation dialog look and feel
         JDialog.setDefaultLookAndFeelDecorated(true);
@@ -800,7 +803,7 @@ public class MainWindow extends javax.swing.JFrame
             }
         });
 
-        jCheckBox1.setText("Filtrer par la région, l'appellation, ou le vigneron ");
+        jCheckBox1.setText("Filtrer par le casier, la région, l'appellation ou le vigneron ");
         jCheckBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCheckBox1ItemStateChanged(evt);
@@ -1546,18 +1549,20 @@ public class MainWindow extends javax.swing.JFrame
     }
 
     private void filter() {
-        String text = jTextField1.getText();
+        String text = jTextField1.getText().trim();
         if (text.matches("\\s*")) {
             //reset filter, show all the entries
             text = "";
         }
-        logger.debug("Filtering by " + text);
         TextRowFilter rowFilter = (TextRowFilter) tableRowSorter.getRowFilter();
         if (rowFilter != null) {
             rowFilter.setText(text);
+            logger.debug("Filtering by " + text);
             tableRowSorter.sort();
         } else {
-            rowFilter = new TextRowFilter(text, new Column[]{REGION, APPELLATION, VIGNERON});
+            rowFilter = new TextRowFilter(text, new Column[]{CASIER, REGION, APPELLATION, VIGNERON},
+                    new boolean[]{true, false, false, false});
+            logger.debug("Setting up row filter");
             tableRowSorter.setRowFilter(rowFilter);
         }
     }
@@ -1580,8 +1585,6 @@ public class MainWindow extends javax.swing.JFrame
             SortKey newSortKey = new SortKey(sortKey.getColumn(), SortOrder.UNSORTED);
             newSortKeys.add(newSortKey);
         }
-        //sort by caiser if preference is set
-//        newSortKeys.add(new SortKey(CASIER.index(), SortOrder.ASCENDING));
         tableRowSorter.setSortKeys(newSortKeys);
         tableRowSorter.sort();
     }

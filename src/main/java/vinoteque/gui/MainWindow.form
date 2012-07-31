@@ -623,7 +623,7 @@
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCheckBox1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Filtrer par la r&#xe9;gion, l&apos;appellation, ou le vigneron "/>
+                <Property name="text" type="java.lang.String" value="Filtrer par le casier, la r&#xe9;gion, l&apos;appellation ou le vigneron "/>
               </Properties>
               <Events>
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jCheckBox1ItemStateChanged"/>
